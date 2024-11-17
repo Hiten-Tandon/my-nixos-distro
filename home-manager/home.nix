@@ -32,6 +32,8 @@ spicePkgs: inputs:
 
   programs = {
     home-manager.enable = true;
+    git.enable = true;
+    gh.enable = true;
     nushell = {
       enable = true;
       configFile.source = ./config.nu;

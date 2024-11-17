@@ -3,5 +3,5 @@ name = "hitentandon"
 display-name = "Hiten-Tandon"
 initial-password = "123456"
 sudo = true
+shell = "nushell"
 time-zone = "Asia/Kolkata"
-
