@@ -22,6 +22,7 @@ spicePkgs: inputs:
       kde-rounded-corners
       element-desktop
       element-web-unwrapped
+      vesktop
     ];
     file = {
       ".config/contour/contour.yml".source = ./contour.yml;
