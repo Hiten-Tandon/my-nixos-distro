@@ -36,6 +36,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              backupFileExtension = "backup";
               users.${user.name} =
                 (import ./home-manager/home.nix spicePkgs inputs);
               extraSpecialArgs = {
