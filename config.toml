@@ -1,0 +1,7 @@
+[user]
+name = "hitentandon"
+display-name = "Hiten-Tandon"
+initial-password = "123456"
+sudo = true
+time-zone = "Asia/Kolkata"
+
