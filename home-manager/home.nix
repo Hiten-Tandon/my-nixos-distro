@@ -28,7 +28,10 @@ spicePkgs: inputs:
       ".config/contour/contour.yml".source = ./contour.yml;
       ".config/contour/default_contour.yml".source = ./default_contour.yml;
     };
-    sessionVariables = { EDITOR = "nvim"; };
+    sessionVariables = {
+      EDITOR = "nvim"; 
+      GIT_EDITOR = "nvim";
+    };
   };
 
   programs = {
