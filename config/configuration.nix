@@ -68,7 +68,7 @@ user: system:
     shell = pkgs.${user.shell or "bash"};
     extraGroups = [ "networkmanager" ]
       ++ (if user.sudo or true then [ "wheel" ] else [ ]);
-    packages = with pkgs; [ brave kitty gcc clang-tools ];
+    packages = with pkgs; [ brave kitty gcc clang-tools cmake gnumake ];
   };
 
   fonts = {
