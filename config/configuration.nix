@@ -1,9 +1,9 @@
-user:
+user: system:
 { pkgs, ... }: {
   imports = [ ./hardware-configuration.nix ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  time.timeZone = user.time-zone;
+  time.timeZone = system.time-zone;
 
   virtualisation.vmVariant.virtualisation = {
     memorySize = 8192;
@@ -26,10 +26,11 @@ user:
         layout = "us";
         options = "eurosign:e,caps:escape";
       };
+      displayManager.gdm.enable = system.dm == "gdm";
     };
     displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
+      enable = system.dm == "sddm";
+      wayland.enable = system.dm == "sddm";
     };
     desktopManager.plasma6.enable = true;
     fwupd.enable = true;
@@ -57,6 +58,8 @@ user:
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
+  environment.stub-ld.enable = true;
+  programs.nix-ld.enable = true;
 
   users.users.${user.name} = {
     isNormalUser = true;
@@ -65,7 +68,7 @@ user:
     shell = pkgs.${user.shell or "bash"};
     extraGroups = [ "networkmanager" ]
       ++ (if user.sudo or true then [ "wheel" ] else [ ]);
-    packages = [ pkgs.brave pkgs.kitty ];
+    packages = with pkgs; [ brave kitty gcc clang-tools ];
   };
 
   fonts = {

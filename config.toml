@@ -4,4 +4,9 @@ display-name = "Hiten-Tandon"
 initial-password = "123456"
 sudo = true
 shell = "nushell"
+de = "kde"                    # TODO: Valid Options include: KDE, Gnome, Cosmic, Xfce, Cinnamon
+# wm = Hyprland               # TODO: Valid Options include: Hyprland, i3, awesome, swaywm
+
+[system]
+dm = "sddm"                # TODO: gdm 
 time-zone = "Asia/Kolkata"

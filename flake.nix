@@ -24,13 +24,14 @@
         inherit system;
         config.allowUnfree = true;
       };
-      user = (builtins.fromTOML (builtins.readFile ./config.toml)).user;
+      config = (builtins.fromTOML (builtins.readFile ./config.toml));
+      user = config.user;
       spicePkgs = spicetify-nix.legacyPackages.${system};
     in {
       nixosConfigurations.${user.name} = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          (import ./config/configuration.nix user)
+          (import ./config/configuration.nix user config.system)
           home-manager.nixosModules.home-manager
           {
             home-manager = {
