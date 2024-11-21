@@ -18,6 +18,7 @@ spicePkgs: inputs:
       fzf
       btop
       stable.contour
+      bash-language-server
       kdePackages.qtstyleplugin-kvantum
       kde-rounded-corners
       element-desktop
@@ -40,6 +41,7 @@ spicePkgs: inputs:
   };
 
   programs = {
+    ripgrep.enable = true;
     home-manager.enable = true;
     git.enable = true;
     gh.enable = true;

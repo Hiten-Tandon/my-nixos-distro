@@ -22,4 +22,11 @@ return {
   },
   { "cdmill/focus.nvim", opts = {} },
   { "meznaric/key-analyzer.nvim", opts = {} },
+  {
+    "roberte777/keep-it-secret.nvim",
+    opts = {
+      wildcards = { ".*(.env)$", ".*(.secret)$" },
+      enabled = true,
+    },
+  },
 }
