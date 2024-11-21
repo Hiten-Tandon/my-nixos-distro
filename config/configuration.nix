@@ -2,7 +2,11 @@ user: system:
 { pkgs, ... }: {
   imports = [ ./hardware-configuration.nix ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    substituters = ["https://wezterm.cachix.org"];
+    trusted-public-keys = ["wezterm.cachix.org-1:kAbhjYUC9qvblTE+s7S+kl5XM1zVa4skO+E/1IDWdH0="];
+  };
   time.timeZone = system.time-zone;
 
   virtualisation.vmVariant.virtualisation = {

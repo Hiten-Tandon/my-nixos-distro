@@ -896,15 +896,5 @@ $env.config = {
         }
     ]
 }
- $env.XDG_DATA_DIRS = [$env.XDG_DATA_DIRS '/var/lib/flatpak/exports/share' '/home/hitentandon/.local/share/flatpak/exports/share'] | str join ':'
- if 'ZELLIJ' not-in ($env | columns) {
-    if 'ZELLIJ_AUTO_ATTACH' in ($env | columns) and $env.ZELLIJ_AUTO_ATTACH == 'true' {
-      zellij attach -c
-    } else {
-      zellij
-    }
-
-    exit
-  }
-sleep 1.2sec
+sleep 1sec
 fastfetch

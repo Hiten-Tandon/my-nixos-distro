@@ -1,5 +1,5 @@
 spicePkgs: inputs:
-{ stable, user, pkgs, ... }: {
+{  user, pkgs, ... }: {
   imports = [ ./fastfetch.nix (import ./spicetify.nix spicePkgs inputs) ];
   home = {
     username = user.name;
@@ -17,7 +17,6 @@ spicePkgs: inputs:
       marksman
       fzf
       btop
-      stable.contour
       bash-language-server
       kdePackages.qtstyleplugin-kvantum
       kde-rounded-corners
@@ -27,8 +26,6 @@ spicePkgs: inputs:
       wl-clipboard
     ];
     file = {
-      ".config/contour/contour.yml".source = ./contour.yml;
-      ".config/contour/default_contour.yml".source = ./default_contour.yml;
       ".config/nvim" = {
         source = ./nvim-config;
         recursive = true;
@@ -45,6 +42,11 @@ spicePkgs: inputs:
     home-manager.enable = true;
     git.enable = true;
     gh.enable = true;
+    wezterm = {
+      enable = true;
+      package = inputs.wezterm.packages.${pkgs.system}.default;
+      extraConfig = builtins.readFile ./wezterm.lua;
+    };
     nushell = {
       enable = true;
       configFile.source = ./config.nu;
@@ -69,15 +71,6 @@ spicePkgs: inputs:
       enableBashIntegration = true;
       enableNushellIntegration = true;
       options = [ "--cmd cd" ];
-    };
-    zellij = {
-      enable = true;
-      settings = {
-        theme = "ayu_dark";
-        ui.pane_frames.rounded_corners = true;
-        on_force_close = "quit";
-        default_layout = "compact";
-      };
     };
   };
 }
