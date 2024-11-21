@@ -896,5 +896,4 @@ $env.config = {
         }
     ]
 }
-sleep 1sec
 fastfetch
