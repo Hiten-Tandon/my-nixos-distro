@@ -1,5 +1,5 @@
 spicePkgs: inputs:
-{  user, pkgs, ... }: {
+{ user, pkgs, ... }: {
   imports = [ ./fastfetch.nix (import ./spicetify.nix spicePkgs inputs) ];
   home = {
     username = user.name;

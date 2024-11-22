@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,10 +14,10 @@
   };
 
   outputs =
-    { nixpkgs-stable, nixpkgs, home-manager, spicetify-nix, ... }@inputs:
+    inputs@{ nixpkgs-stable, nixpkgs, home-manager, spicetify-nix, ... }:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
+      unstable = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
@@ -25,6 +25,7 @@
         inherit system;
         config.allowUnfree = true;
       };
+      pkgs = unstable;
       config = (builtins.fromTOML (builtins.readFile ./config.toml));
       user = config.user;
       spicePkgs = spicetify-nix.legacyPackages.${system};
@@ -42,7 +43,7 @@
               users.${user.name} =
                 (import ./home-manager/home.nix spicePkgs inputs);
               extraSpecialArgs = {
-                inherit pkgs stable user;
+                inherit pkgs user unstable stable;
                 username = user.name;
               };
             };
