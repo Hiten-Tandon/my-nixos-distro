@@ -10,11 +10,15 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    cosmic-de = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     wezterm.url = "github:wez/wezterm?dir=nix";
   };
 
   outputs =
-    inputs@{ nixpkgs-stable, nixpkgs, home-manager, spicetify-nix, ... }:
+    inputs@{ nixpkgs-stable, nixpkgs, home-manager, spicetify-nix, cosmic-de, ... }:
     let
       system = "x86_64-linux";
       unstable = import nixpkgs {
@@ -33,6 +37,7 @@
       nixosConfigurations.${user.name} = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
+          cosmic-de.nixosModules.default
           (import ./config/configuration.nix user config.system)
           home-manager.nixosModules.home-manager
           {
