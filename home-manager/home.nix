@@ -41,7 +41,12 @@ spicePkgs: inputs:
     ripgrep.enable = true;
     home-manager.enable = true;
     git.enable = true;
-    gh.enable = true;
+    gh = {
+      enable = true;
+      settings = {
+        editor = "nvim";
+      };
+    };
     wezterm = {
       enable = true;
       package = inputs.wezterm.packages.${pkgs.system}.default;
