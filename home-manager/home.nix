@@ -24,6 +24,7 @@ spicePkgs: inputs:
       element-web-unwrapped
       vesktop
       wl-clipboard
+      kdevelop
     ];
     file = {
       ".config/nvim" = {
@@ -70,6 +71,7 @@ spicePkgs: inputs:
       viAlias = true;
       vimAlias = true;
       defaultEditor = true;
+      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     };
     zoxide = {
       enable = true;
