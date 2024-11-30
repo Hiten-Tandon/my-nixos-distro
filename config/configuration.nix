@@ -4,9 +4,9 @@ user: system:
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
-    substituters = [ "https://wezterm.cachix.org" ];
+    substituters = [ "https://wezterm.cachix.org" "https://cache.iog.io" ];
     trusted-public-keys =
-      [ "wezterm.cachix.org-1:kAbhjYUC9qvblTE+s7S+kl5XM1zVa4skO+E/1IDWdH0=" ];
+      [ "wezterm.cachix.org-1:kAbhjYUC9qvblTE+s7S+kl5XM1zVa4skO+E/1IDWdH0=" "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" ];
   };
   time.timeZone = system.time-zone;
 
@@ -77,8 +77,7 @@ user: system:
   };
 
   fonts = {
-    packages = with pkgs;
-      [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+    packages = [ pkgs.nerd-fonts.jetbrains-mono ];
     fontconfig.defaultFonts.monospace = [ "JetBrainsMono" ];
   };
 
