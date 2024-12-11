@@ -25,6 +25,7 @@ spicePkgs: inputs:
       vesktop
       wl-clipboard
       kdevelop
+      nushellPlugins.polars
     ];
     file = {
       ".config/nvim" = {
