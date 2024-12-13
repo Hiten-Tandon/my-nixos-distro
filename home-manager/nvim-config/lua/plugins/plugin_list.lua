@@ -11,7 +11,7 @@ return {
   { "brenoprata10/nvim-highlight-colors", opts = {} },
   {
     "mistricky/codesnap.nvim",
-    build = "make build_generator",
+    build = "make",
     opts = {
       watermark = "Hiten Tandon",
       title = "Code By Hiten Tandon",
