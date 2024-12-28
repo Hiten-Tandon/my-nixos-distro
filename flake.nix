@@ -12,10 +12,11 @@
     };
     wezterm.url = "github:wez/wezterm?dir=nix";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    stylix.url = "github:danth/stylix";
   };
 
   outputs =
-    inputs@{ nixpkgs-stable, nixpkgs, home-manager, spicetify-nix, ... }:
+    inputs@{ nixpkgs-stable, nixpkgs, home-manager, spicetify-nix, stylix, ... }:
     let
       system = "x86_64-linux";
       unstable = import nixpkgs {
@@ -49,6 +50,7 @@
               };
             };
           }
+          stylix.nixosModules.stylix
         ];
       };
 

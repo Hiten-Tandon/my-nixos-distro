@@ -30,4 +30,19 @@ return {
     },
   },
   { "ShinKage/idris2-nvim", dependencies = { "neovim/nvim-lspconfig", "MunifTanjim/nui.nvim" }, opts = {} },
+  {
+    "arminveres/md-pdf.nvim",
+    branch = "main",
+    lazy = true,
+    keys = {
+      {
+        "<leader>m",
+        function()
+          require("md-pdf").convert_md_to_pdf()
+        end,
+        desc = "Markdown preview",
+      },
+    },
+    opts = {},
+  },
 }

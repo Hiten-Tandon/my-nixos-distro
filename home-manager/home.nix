@@ -1,6 +1,6 @@
-spicePkgs: inputs:
+spicePkgs: inputs: 
 { user, pkgs, ... }: {
-  imports = [ ./fastfetch.nix (import ./spicetify.nix spicePkgs inputs) ];
+  imports = [ ./fastfetch.nix (import ./spicetify.nix spicePkgs inputs) ../config/stylix.nix ];
   home = {
     username = user.name;
     homeDirectory = "/home/" + user.name;
@@ -26,6 +26,8 @@ spicePkgs: inputs:
       wl-clipboard
       kdevelop
       nushellPlugins.polars
+      pandoc_3_5
+      texliveFull
     ];
     file = {
       ".config/nvim" = {
@@ -40,6 +42,7 @@ spicePkgs: inputs:
   };
 
   programs = {
+    lf.enable = true;
     ripgrep.enable = true;
     home-manager.enable = true;
     git.enable = true;
