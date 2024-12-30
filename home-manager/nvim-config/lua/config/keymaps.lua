@@ -8,3 +8,7 @@ vim.keymap.set(
   require("keep-it-secret").toggle,
   { noremap = true, silent = true, desc = "Toggle secret" }
 )
+vim.keymap.set("n", "<C-w>m", "<Cmd>WindowsMaximize<CR>")
+vim.keymap.set("n", "<C-w>_", "<Cmd>WindowsMaximizeVertically<CR>")
+vim.keymap.set("n", "<C-w>|", "<Cmd>WindowsMaximizeHorizontally<CR>")
+vim.keymap.set("n", "<C-w>=", "<Cmd>WindowsEqualize<CR>")
