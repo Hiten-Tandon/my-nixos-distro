@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
     image = ./wp12329532-nixos-wallpapers.png;
     fonts = {
       serif = {
