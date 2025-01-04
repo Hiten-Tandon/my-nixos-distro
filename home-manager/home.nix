@@ -1,6 +1,10 @@
-spicePkgs: inputs: 
+spicePkgs: inputs:
 { user, pkgs, ... }: {
-  imports = [ ./fastfetch.nix (import ./spicetify.nix spicePkgs inputs) ../config/stylix.nix ];
+  imports = [
+    ./fastfetch.nix
+    (import ./spicetify.nix spicePkgs inputs)
+    ../config/stylix.nix
+  ];
   home = {
     username = user.name;
     homeDirectory = "/home/" + user.name;
@@ -48,9 +52,7 @@ spicePkgs: inputs:
     git.enable = true;
     gh = {
       enable = true;
-      settings = {
-        editor = "nvim";
-      };
+      settings = { editor = "nvim"; };
     };
     wezterm = {
       enable = true;

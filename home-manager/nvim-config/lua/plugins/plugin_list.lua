@@ -89,4 +89,5 @@ return {
       preferred_environment = "development", -- Optional: prioritize specific env files
     },
   },
+  { "Olical/conjure", ft = { "scheme", "racket", "clojure", "fennel" } },
 }

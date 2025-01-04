@@ -15,8 +15,8 @@
     stylix.url = "github:danth/stylix";
   };
 
-  outputs =
-    inputs@{ nixpkgs-stable, nixpkgs, home-manager, spicetify-nix, stylix, ... }:
+  outputs = inputs@{ nixpkgs-stable, nixpkgs, home-manager, spicetify-nix
+    , stylix, ... }:
     let
       system = "x86_64-linux";
       unstable = import nixpkgs {
