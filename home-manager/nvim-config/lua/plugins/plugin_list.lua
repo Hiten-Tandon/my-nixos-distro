@@ -51,12 +51,13 @@ return {
       require("windows").setup()
     end,
   },
-  {
-    "Prometheus1400/markdown-latex-render.nvim",
-    dependencies = { "3rd/image.nvim", "nvim-lua/plenary.nvim" },
-    opts = {},
-  },
   { "Olical/conjure", ft = { "scheme", "racket", "clojure", "fennel" } },
   { "rose-pine/neovim", name = "rose-pine" },
   { "LazyVim/LazyVim", opts = { colorscheme = "rose-pine" } },
+  {
+    "jackplus-xyz/scroll-it.nvim",
+    opts = {
+      enabled = true,
+    },
+  },
 }
