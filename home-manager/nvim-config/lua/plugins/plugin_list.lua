@@ -51,13 +51,11 @@ return {
       require("windows").setup()
     end,
   },
-  { "Olical/conjure", ft = { "scheme", "racket", "clojure", "fennel" } },
+  { "Olical/conjure", ft = { "scheme", "racket", "clojure", "fennel", "lisp" } },
   { "rose-pine/neovim", name = "rose-pine" },
   { "LazyVim/LazyVim", opts = { colorscheme = "rose-pine" } },
   {
     "jackplus-xyz/scroll-it.nvim",
-    opts = {
-      enabled = true,
-    },
+    opts = {},
   },
 }
