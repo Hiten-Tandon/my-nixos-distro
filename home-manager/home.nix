@@ -38,6 +38,9 @@ spicePkgs: inputs:
         source = ./nvim-config;
         recursive = true;
       };
+      ".config/starship.toml" = {
+        source = ./starship.toml;
+      };
     };
     sessionVariables = {
       EDITOR = "nvim";
