@@ -17,8 +17,6 @@ iris = '#c4a7e7'
 [directory]
 format = "[](fg:overlay)[ $path ]($style)[](fg:overlay) "
 style = "bg:overlay fg:pine"
-truncation_length = 3
-truncation_symbol = "…/"
 
 [directory.substitutions]
 Documents = "󰈙"
