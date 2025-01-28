@@ -58,4 +58,10 @@ return {
     "jackplus-xyz/scroll-it.nvim",
     opts = {},
   },
+  {
+    "nvzone/typr",
+    dependencies = "nvzone/volt",
+    opts = {},
+    cmd = { "Typr", "TyprStats" },
+  },
 }

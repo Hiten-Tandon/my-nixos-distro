@@ -1,5 +1,6 @@
 user: system:
-{ pkgs, ... }: {
+{ nixpkgs, pkgs, ... }: {
+  nixpkgs.config.allowUnfree = true;
   imports = [ ./hardware-configuration.nix ./stylix.nix ];
 
   nix.settings = {
@@ -68,7 +69,15 @@ user: system:
 
   i18n.defaultLocale = "en_US.UTF-8";
   environment.stub-ld.enable = true;
-  programs.nix-ld.enable = true;
+  programs = {
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+    };
+    nix-ld.enable = true;
+  };
 
   users.users.${user.name} = {
     isNormalUser = true;

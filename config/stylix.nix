@@ -3,6 +3,7 @@
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
     image = ./wp12329532-nixos-wallpapers.png;
+    targets.spicetify.enable = false;
     fonts = {
       serif = {
         package = pkgs.dejavu_fonts;
