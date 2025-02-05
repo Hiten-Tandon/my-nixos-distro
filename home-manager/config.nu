@@ -1,5 +1,6 @@
 $env.config.show_banner = false;
 $env.config.use_kitty_protocol = true;
+$env.PATH = $env.PATH | append ["/var/lib/flatpak/exports/bin"]
 
 export def nixos-rbld [] {
   let currDir = $"(pwd)"

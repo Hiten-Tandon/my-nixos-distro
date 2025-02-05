@@ -64,4 +64,5 @@ return {
     opts = {},
     cmd = { "Typr", "TyprStats" },
   },
+  { "OXY2DEV/helpview.nvim" },
 }

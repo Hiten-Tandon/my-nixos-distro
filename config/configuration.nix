@@ -1,4 +1,4 @@
-user: system:
+user: system: stable:
 { nixpkgs, pkgs, ... }: {
   nixpkgs.config.allowUnfree = true;
   imports = [ ./hardware-configuration.nix ./stylix.nix ];
@@ -51,6 +51,7 @@ user: system:
     };
     libinput.enable = true;
     openssh.enable = true;
+    flatpak.enable = true;
   };
 
   hardware = {

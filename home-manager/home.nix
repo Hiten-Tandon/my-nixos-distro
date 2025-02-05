@@ -2,7 +2,7 @@ spicePkgs: inputs:
 { stable, user, pkgs, ... }: {
   imports = [
     ./fastfetch.nix
-    # (import ./spicetify.nix spicePkgs inputs)
+    (import ./spicetify.nix spicePkgs inputs)
     ../config/stylix.nix
   ];
   home = {
@@ -30,7 +30,7 @@ spicePkgs: inputs:
       wl-clipboard
       kdevelop
       nushellPlugins.polars
-      stable.pandoc_3_5
+      pandoc_3_6
       texliveFull
     ];
     file = {

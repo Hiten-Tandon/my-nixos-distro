@@ -10,3 +10,6 @@ de = "kde"                    # TODO: Valid Options include: KDE, Gnome, Cosmic,
 [system]
 dm = "sddm"                # TODO: gdm 
 time-zone = "Asia/Kolkata"
+
+[misc]
+flatpak-enabled = true
