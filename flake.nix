@@ -1,19 +1,16 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.follows = "cosmic-de/nixpkgs";    # nixpkgs.url = "github:NixOS/nixpkgs";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "cosmic-de/nixpkgs";
     };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    cosmic-de = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    cosmic-de.url = "github:lilyinstarlight/nixos-cosmic";
     wezterm.url = "github:wez/wezterm?dir=nix";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nix-flatpak.url = "github:gmodena/nix-flatpak"; 
