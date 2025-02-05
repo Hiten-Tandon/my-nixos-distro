@@ -2,7 +2,7 @@
   programs.fastfetch = {
     enable = true;
     settings = {
-      logo.source = "nixos-old";
+      logo.source = "nixos";
       display.separator = " : ";
 
       modules = [

@@ -10,8 +10,6 @@ spicePkgs: inputs:
       fullAppDisplay
       keyboardShortcut
     ];
-    theme = spicePkgs.themes.sleek;
-    colorScheme = "dracula";
   };
 
 }

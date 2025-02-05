@@ -1,13 +1,17 @@
-user: system:
-{ pkgs, ... }: {
-  imports = [ ./hardware-configuration.nix ];
+user: system: stable:
+{ nixpkgs, pkgs, ... }: {
+  nixpkgs.config.allowUnfree = true;
+  imports = [ ./hardware-configuration.nix ./stylix.nix ];
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
-    substituters = [ "https://wezterm.cachix.org" "https://cosmic.cachix.org/" ];
-    trusted-public-keys =
-      [ "wezterm.cachix.org-1:kAbhjYUC9qvblTE+s7S+kl5XM1zVa4skO+E/1IDWdH0=" "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+    substituters = [ "https://wezterm.cachix.org" "https://cache.iog.io" ];
+    trusted-public-keys = [
+      "wezterm.cachix.org-1:kAbhjYUC9qvblTE+s7S+kl5XM1zVa4skO+E/1IDWdH0="
+      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+    ];
   };
+
   time.timeZone = system.time-zone;
 
   virtualisation.vmVariant.virtualisation = {
@@ -17,6 +21,7 @@ user: system:
   };
 
   boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -48,6 +53,7 @@ user: system:
     };
     libinput.enable = true;
     openssh.enable = true;
+    flatpak.enable = true;
   };
 
   hardware = {
@@ -66,7 +72,15 @@ user: system:
 
   i18n.defaultLocale = "en_US.UTF-8";
   environment.stub-ld.enable = true;
-  programs.nix-ld.enable = true;
+  programs = {
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+    };
+    nix-ld.enable = true;
+  };
 
   users.users.${user.name} = {
     isNormalUser = true;
@@ -79,8 +93,7 @@ user: system:
   };
 
   fonts = {
-    packages = with pkgs;
-      [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+    packages = [ pkgs.nerd-fonts.jetbrains-mono ];
     fontconfig.defaultFonts.monospace = [ "JetBrainsMono" ];
   };
 

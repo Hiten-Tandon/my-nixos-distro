@@ -22,11 +22,47 @@ return {
   },
   { "cdmill/focus.nvim", opts = {} },
   { "meznaric/key-analyzer.nvim", opts = {} },
+  { "ShinKage/idris2-nvim", dependencies = { "neovim/nvim-lspconfig", "MunifTanjim/nui.nvim" }, opts = {} },
   {
-    "roberte777/keep-it-secret.nvim",
-    opts = {
-      wildcards = { ".*(.env)$", ".*(.secret)$" },
-      enabled = true,
+    "arminveres/md-pdf.nvim",
+    branch = "main",
+    lazy = true,
+    keys = {
+      {
+        "<leader>m",
+        function()
+          require("md-pdf").convert_md_to_pdf()
+        end,
+        desc = "Markdown preview",
+      },
     },
+    opts = {},
   },
+  {
+    "anuvyklack/windows.nvim",
+    dependencies = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim",
+    },
+    config = function()
+      vim.o.winwidth = 10
+      vim.o.winminwidth = 10
+      vim.o.equalalways = false
+      require("windows").setup()
+    end,
+  },
+  { "Olical/conjure", ft = { "scheme", "racket", "clojure", "fennel", "lisp" } },
+  { "rose-pine/neovim", name = "rose-pine" },
+  { "LazyVim/LazyVim", opts = { colorscheme = "rose-pine" } },
+  {
+    "jackplus-xyz/scroll-it.nvim",
+    opts = {},
+  },
+  {
+    "nvzone/typr",
+    dependencies = "nvzone/volt",
+    opts = {},
+    cmd = { "Typr", "TyprStats" },
+  },
+  { "OXY2DEV/helpview.nvim" },
 }

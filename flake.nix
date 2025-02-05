@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -15,10 +15,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wezterm.url = "github:wez/wezterm?dir=nix";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    nix-flatpak.url = "github:gmodena/nix-flatpak"; 
+    stylix.url = "github:danth/stylix";
   };
 
-  outputs =
-    inputs@{ nixpkgs-stable, nixpkgs, home-manager, spicetify-nix, cosmic-de, ... }:
+  outputs = inputs@{  nix-flatpak, nixpkgs-stable, nixpkgs, home-manager, spicetify-nix
+    , stylix, cosmic-de, ... }:
     let
       system = "x86_64-linux";
       unstable = import nixpkgs {
@@ -33,12 +36,13 @@
       config = (builtins.fromTOML (builtins.readFile ./config.toml));
       user = config.user;
       spicePkgs = spicetify-nix.legacyPackages.${system};
+      flatpak-enabled = config.misc.flatpak-enabled or true;
     in {
       nixosConfigurations.${user.name} = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           cosmic-de.nixosModules.default
-          (import ./config/configuration.nix user config.system)
+          (import ./config/configuration.nix user config.system stable)
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -53,7 +57,8 @@
               };
             };
           }
-        ];
+          stylix.nixosModules.stylix
+        ] ++ (if flatpak-enabled then [nix-flatpak.nixosModules.nix-flatpak] else []);
       };
 
       formatter.${system} = pkgs.nixfmt-classic;
