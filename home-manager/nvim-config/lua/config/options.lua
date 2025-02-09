@@ -7,7 +7,7 @@ vim.g["conjure#client#scheme#stdio#prompt_pattern"] = "> "
 vim.g.markdown_fenced_languages = {
   "ts=typescript",
 }
-vim.o.scrolloff = 999
+vim.o.scrolloff = math.floor(vim.api.nvim_win_get_height(0) / 2)
 vim.o.exrc = true
 vim.o.secure = true
 vim.o.clipboard = ""

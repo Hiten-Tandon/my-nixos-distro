@@ -26,7 +26,7 @@ spicePkgs: inputs:
       kde-rounded-corners
       element-desktop
       element-web-unwrapped
-      vesktop
+      stable.vesktop
       wl-clipboard
       kdevelop
       nushellPlugins.polars
