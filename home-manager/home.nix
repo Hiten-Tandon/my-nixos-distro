@@ -1,4 +1,4 @@
-spicePkgs: inputs:
+spicePkgs: zen: inputs:
 { stable, user, pkgs, ... }: {
   imports = [
     ./fastfetch.nix
@@ -26,12 +26,16 @@ spicePkgs: inputs:
       kde-rounded-corners
       element-desktop
       element-web-unwrapped
-      stable.vesktop
+      vesktop
+      mermaid-filter
+      mermaid-cli
+      librsvg
       wl-clipboard
       kdevelop
       nushellPlugins.polars
       pandoc_3_6
       texliveFull
+      zen
     ];
     file = {
       ".config/nvim" = {

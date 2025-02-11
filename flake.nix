@@ -14,10 +14,11 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nix-flatpak.url = "github:gmodena/nix-flatpak"; 
     stylix.url = "github:danth/stylix";
+    zen-browser.url = "gitlab:hiten-tandon/zen-browser-flake";
   };
 
   outputs = inputs@{  nix-flatpak, nixpkgs-stable, nixpkgs, home-manager, spicetify-nix
-    , stylix, ... }:
+    , stylix, zen-browser, ... }:
     let
       system = "x86_64-linux";
       unstable = import nixpkgs {
@@ -33,11 +34,12 @@
       user = config.user;
       spicePkgs = spicetify-nix.legacyPackages.${system};
       flatpak-enabled = config.misc.flatpak-enabled or true;
+      zen = zen-browser.packages.${system}.default;
     in {
       nixosConfigurations.${user.name} = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          (import ./config/configuration.nix user config.system stable)
+          (import ./config/configuration.nix user config.system stable zen)
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -45,7 +47,7 @@
               useUserPackages = true;
               backupFileExtension = "backup";
               users.${user.name} =
-                (import ./home-manager/home.nix spicePkgs inputs);
+                (import ./home-manager/home.nix spicePkgs zen inputs);
               extraSpecialArgs = {
                 inherit pkgs user unstable stable;
                 username = user.name;

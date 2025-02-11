@@ -1,4 +1,4 @@
-user: system: stable:
+user: system: stable: zen:
 { nixpkgs, pkgs, ... }: {
   nixpkgs.config.allowUnfree = true;
   imports = [ ./hardware-configuration.nix ./stylix.nix ];
@@ -87,7 +87,7 @@ user: system: stable:
     shell = pkgs.${user.shell or "bash"};
     extraGroups = [ "networkmanager" ]
       ++ (if user.sudo or true then [ "wheel" ] else [ ]);
-    packages = with pkgs; [ brave kitty gcc clang-tools cmake gnumake ];
+    packages = with pkgs; [ zen kitty gcc clang-tools cmake gnumake ];
   };
 
   fonts = {

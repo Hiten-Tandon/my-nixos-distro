@@ -36,7 +36,9 @@ return {
         desc = "Markdown preview",
       },
     },
-    opts = {},
+    opts = {
+      pandoc_user_args = { "-F mermaid-filter" },
+    },
   },
   {
     "anuvyklack/windows.nvim",

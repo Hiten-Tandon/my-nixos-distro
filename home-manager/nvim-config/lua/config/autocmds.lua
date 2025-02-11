@@ -13,11 +13,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.o.conceallevel = 2
   end,
 })
-
-vim.api.nvim_create_augroup("CenterCursorOnMove", { clear = true })
-
-vim.api.nvim_create_autocmd("CursorMoved", {
-  group = "CenterCursorOnMove",
-  pattern = "*",
-  command = ":normal! zz",
-})
+--
+-- vim.api.nvim_create_augroup("CenterCursorOnMove", { clear = true })
+--
+-- vim.api.nvim_create_autocmd("CursorMoved", {
+--   group = "CenterCursorOnMove",
+--   pattern = "*",
+--   command = ":normal! zz",
+-- })
