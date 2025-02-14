@@ -14,7 +14,7 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nix-flatpak.url = "github:gmodena/nix-flatpak"; 
     stylix.url = "github:danth/stylix";
-    zen-browser.url = "gitlab:hiten-tandon/zen-browser-flake";
+    zen-browser.url = "github:hiten-tandon/twilight-zen-browser-flake";
   };
 
   outputs = inputs@{  nix-flatpak, nixpkgs-stable, nixpkgs, home-manager, spicetify-nix
