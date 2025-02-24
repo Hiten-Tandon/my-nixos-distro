@@ -14,10 +14,13 @@ user: system: stable: zen:
 
   time.timeZone = system.time-zone;
 
-  virtualisation.vmVariant.virtualisation = {
-    memorySize = 8192;
-    cores = 8;
-    diskSize = 128 * 1024;
+  virtualisation = {
+    docker.enable = true;
+    vmVariant.virtualisation = {
+      memorySize = 8192;
+      cores = 8;
+      diskSize = 128 * 1024;
+    };
   };
 
   boot = {
@@ -77,7 +80,10 @@ user: system: stable: zen:
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
     };
-    nix-ld.enable = true;
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [gmp];
+    };
   };
 
   users.users.${user.name} = {
@@ -85,7 +91,7 @@ user: system: stable: zen:
     initialPassword = user.initial-password;
     description = user.display-name;
     shell = pkgs.${user.shell or "bash"};
-    extraGroups = [ "networkmanager" ]
+    extraGroups = [ "networkmanager" "docker" ]
       ++ (if user.sudo or true then [ "wheel" ] else [ ]);
     packages = with pkgs; [ zen kitty gcc clang-tools cmake gnumake ];
   };

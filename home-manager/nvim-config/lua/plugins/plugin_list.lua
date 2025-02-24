@@ -37,7 +37,11 @@ return {
       },
     },
     opts = {
-      pandoc_user_args = { "-F mermaid-filter" },
+      toc = false,
+      pandoc_user_args = {
+        "-F mermaid-filter -F pandoc-plot",
+      },
+      pdf_engine = "xelatex",
     },
   },
   {
