@@ -31,7 +31,6 @@ spicePkgs: zen: inputs:
       mermaid-cli
       librsvg
       wl-clipboard
-      kdevelop
       nushellPlugins.polars
       pandoc_3_6
       texliveFull

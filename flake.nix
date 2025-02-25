@@ -14,7 +14,10 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nix-flatpak.url = "github:gmodena/nix-flatpak"; 
     stylix.url = "github:danth/stylix";
-    zen-browser.url = "github:hiten-tandon/twilight-zen-browser-flake";
+    zen-browser = {
+      url = "github:hiten-tandon/twilight-zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     pandoc-plot.url = "github:hiten-tandon/pandoc-plot-flake";
   };
 
