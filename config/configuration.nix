@@ -5,10 +5,11 @@ user: system: stable: zen:
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
-    substituters = [ "https://wezterm.cachix.org" "https://cache.iog.io" ];
+    substituters = [ "https://wezterm.cachix.org" "https://cache.iog.io" "https://cosmic.cachix.org/" ];
     trusted-public-keys = [
       "wezterm.cachix.org-1:kAbhjYUC9qvblTE+s7S+kl5XM1zVa4skO+E/1IDWdH0="
       "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
     ];
   };
 
