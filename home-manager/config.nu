@@ -7,7 +7,7 @@ export def nixos-rbld [] {
   rm -rf $"($env.HOME)/.gtkrc-2.0"
   cd $"($env.HOME)/projects/my-config"
   sudo nix flake update
-  sudo nixos-rebuild switch --flake $".#((open config.toml).user.name)"
+  sudo nixos-rebuild switch --flake $".#((open config.toml).user.name)" --impure
   cd $currDir
 }
 
