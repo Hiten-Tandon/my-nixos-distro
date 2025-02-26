@@ -28,7 +28,6 @@ spicePkgs: inputs:
       element-web-unwrapped
       vesktop
       wl-clipboard
-      kdevelop
       nushellPlugins.polars
       pandoc_3_6
       texliveFull
