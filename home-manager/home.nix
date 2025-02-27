@@ -36,6 +36,7 @@ spicePkgs: zen: inputs:
       texliveFull
       zen
       inputs.pandoc-plot.outputs.packages.${pkgs.system}.default
+      inputs.fdm.outputs.packages.${pkgs.system}.default
     ];
     file = {
       ".config/nvim" = {

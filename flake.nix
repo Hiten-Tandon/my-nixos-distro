@@ -19,6 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     pandoc-plot.url = "github:hiten-tandon/pandoc-plot-flake";
+    fdm.url = "github:hiten-tandon/freedownloadmanager-nix";
   };
 
   outputs = inputs@{  nix-flatpak, nixpkgs-stable, nixpkgs, home-manager, spicetify-nix
