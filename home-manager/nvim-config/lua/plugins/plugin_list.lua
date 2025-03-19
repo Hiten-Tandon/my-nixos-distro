@@ -6,8 +6,8 @@ return {
     lazy = false,
     version = "*", -- or branch = "dev", to use the latest commit
   },
-  { "LhKipp/nvim-nu", opts = {} },
-  { "sigmaSd/deno-nvim", opts = {} },
+  { "LhKipp/nvim-nu",                     opts = {} },
+  { "sigmaSd/deno-nvim",                  opts = {} },
   { "brenoprata10/nvim-highlight-colors", opts = {} },
   {
     "mistricky/codesnap.nvim",
@@ -20,9 +20,9 @@ return {
       watermark_font_family = "JetBrains Mono Nerd Font",
     },
   },
-  { "cdmill/focus.nvim", opts = {} },
+  { "cdmill/focus.nvim",          opts = {} },
   { "meznaric/key-analyzer.nvim", opts = {} },
-  { "ShinKage/idris2-nvim", dependencies = { "neovim/nvim-lspconfig", "MunifTanjim/nui.nvim" }, opts = {} },
+  { "ShinKage/idris2-nvim",       dependencies = { "neovim/nvim-lspconfig", "MunifTanjim/nui.nvim" }, opts = {} },
   {
     "arminveres/md-pdf.nvim",
     branch = "main",
@@ -57,9 +57,9 @@ return {
       require("windows").setup()
     end,
   },
-  { "Olical/conjure", ft = { "scheme", "racket", "clojure", "fennel", "lisp" } },
+  { "Olical/conjure",   ft = { "scheme", "racket", "clojure", "fennel", "lisp" } },
   { "rose-pine/neovim", name = "rose-pine" },
-  { "LazyVim/LazyVim", opts = { colorscheme = "rose-pine" } },
+  { "LazyVim/LazyVim",  opts = { colorscheme = "rose-pine" } },
   {
     "jackplus-xyz/scroll-it.nvim",
     opts = {},

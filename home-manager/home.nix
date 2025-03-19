@@ -5,6 +5,7 @@ spicePkgs: zen: inputs:
     (import ./spicetify.nix spicePkgs inputs)
     ../config/stylix.nix
   ];
+  stylix.targets.starship.enable = false;
   home = {
     username = user.name;
     homeDirectory = "/home/" + user.name;
@@ -14,7 +15,6 @@ spicePkgs: zen: inputs:
       luarocks
       lua
       nil
-      obs-studio
       ffmpeg
       lazygit
       markdownlint-cli2
@@ -37,14 +37,13 @@ spicePkgs: zen: inputs:
       zen
       inputs.pandoc-plot.outputs.packages.${pkgs.system}.default
       inputs.fdm.outputs.packages.${pkgs.system}.default
+      signal-desktop
+      deno
     ];
     file = {
       ".config/nvim" = {
         source = ./nvim-config;
         recursive = true;
-      };
-      ".config/starship.toml" = {
-        source = ./starship.toml;
       };
     };
     sessionVariables = {
@@ -74,6 +73,7 @@ spicePkgs: zen: inputs:
     starship = {
       enable = true;
       enableNushellIntegration = true;
+      settings = builtins.fromTOML (builtins.readFile ./starship.toml);
     };
     carapace = {
       enable = true;
@@ -92,6 +92,14 @@ spicePkgs: zen: inputs:
       enableBashIntegration = true;
       enableNushellIntegration = true;
       options = [ "--cmd cd" ];
+    };
+    obs-studio = {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-backgroundremoval
+        obs-pipewire-audio-capture
+      ];
     };
   };
 }

@@ -12,7 +12,7 @@
     };
     wezterm.url = "github:wez/wezterm?dir=nix";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    nix-flatpak.url = "github:gmodena/nix-flatpak"; 
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
     stylix.url = "github:danth/stylix";
     zen-browser = {
       url = "github:hiten-tandon/twilight-zen-browser-flake";
@@ -22,8 +22,8 @@
     fdm.url = "github:hiten-tandon/freedownloadmanager-nix";
   };
 
-  outputs = inputs@{  nix-flatpak, nixpkgs-stable, nixpkgs, home-manager, spicetify-nix
-    , stylix, zen-browser, ... }:
+  outputs = inputs@{ nix-flatpak, nixpkgs-stable, nixpkgs, home-manager
+    , spicetify-nix, stylix, zen-browser, ... }:
     let
       system = "x86_64-linux";
       unstable = import nixpkgs {
@@ -60,7 +60,10 @@
             };
           }
           stylix.nixosModules.stylix
-        ] ++ (if flatpak-enabled then [nix-flatpak.nixosModules.nix-flatpak] else []);
+        ] ++ (if flatpak-enabled then
+          [ nix-flatpak.nixosModules.nix-flatpak ]
+        else
+          [ ]);
       };
 
       formatter.${system} = pkgs.nixfmt-classic;

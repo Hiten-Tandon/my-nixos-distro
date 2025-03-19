@@ -5,11 +5,17 @@ user: system: stable: zen:
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
-    substituters = [ "https://wezterm.cachix.org" "https://cache.iog.io" "https://cosmic.cachix.org/" ];
+    substituters = [
+      "https://wezterm.cachix.org"
+      "https://cache.iog.io"
+      "https://cosmic.cachix.org/"
+      "https://nix-community.cachix.org"
+    ];
     trusted-public-keys = [
       "wezterm.cachix.org-1:kAbhjYUC9qvblTE+s7S+kl5XM1zVa4skO+E/1IDWdH0="
       "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
       "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
 
@@ -26,6 +32,12 @@ user: system: stable: zen:
 
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_6_13;
+    extraModulePackages = with pkgs;
+      [ linuxKernel.packages.linux_6_13.v4l2loopback.out ];
+    kernelModules = [ "v4l2loopback" "snd-aloop" ];
+    extraModprobeConfig = ''
+      options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
+    '';
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -83,7 +95,7 @@ user: system: stable: zen:
     };
     nix-ld = {
       enable = true;
-      libraries = with pkgs; [gmp];
+      libraries = with pkgs; [ gmp ];
     };
   };
 
