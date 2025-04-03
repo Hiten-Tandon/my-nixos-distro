@@ -71,4 +71,5 @@ return {
     cmd = { "Typr", "TyprStats" },
   },
   { "OXY2DEV/helpview.nvim" },
+  { "laytan/cloak.nvim",    opts = {} }
 }
