@@ -84,7 +84,10 @@ user: system: stable: zen:
     networkmanager.enable = true;
   };
 
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings.LC_ALL = "en_US.UTF-8";
+  };
   environment.stub-ld.enable = true;
   programs = {
     steam = {
