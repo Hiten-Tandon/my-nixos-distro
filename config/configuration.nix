@@ -42,6 +42,9 @@ user: system: stable: zen:
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
+    kernel.sysctl = {
+      "vm.swappiness" = 1;
+    };
   };
 
   services = {

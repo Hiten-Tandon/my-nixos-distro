@@ -11,4 +11,5 @@ vim.o.scrolloff = math.floor(vim.api.nvim_win_get_height(0) / 2)
 vim.o.exrc = true
 vim.o.secure = true
 vim.o.clipboard = ""
+vim.o.shiftwidth = 2
 vim.g["mkdp_auto_start"] = true

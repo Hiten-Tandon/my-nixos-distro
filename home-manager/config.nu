@@ -9,6 +9,7 @@ export def nixos-rbld [] {
   cd $"($env.HOME)/projects/my-config"
   sudo nix flake update
   sudo nixos-rebuild switch --flake $".#((open config.toml).user.name)" --impure
+  lazygit
   cd $currDir
 }
 

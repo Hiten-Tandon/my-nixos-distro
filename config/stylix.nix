@@ -3,10 +3,7 @@
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
     image = ./wallpaper.jpg;
-    targets = {
-      spicetify.enable = false;
-      qt.enable = false;
-    };
+    targets.spicetify.enable = false;
     fonts = {
       serif = {
         package = pkgs.dejavu_fonts;
