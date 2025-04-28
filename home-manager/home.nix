@@ -39,6 +39,7 @@ spicePkgs: zen: inputs:
       inputs.fdm.outputs.packages.${pkgs.system}.default
       signal-desktop
       deno
+      license-go
     ];
     file = {
       ".config/nvim" = {
