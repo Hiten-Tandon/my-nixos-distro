@@ -11,6 +11,9 @@ spicePkgs: inputs:
       shuffle
       fullAppDisplay
       keyboardShortcut
+      powerBar
+      beautifulLyrics
+      volumePercentage
     ];
   };
 
