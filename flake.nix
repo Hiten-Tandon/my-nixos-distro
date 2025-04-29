@@ -22,27 +22,40 @@
     fdm.url = "github:hiten-tandon/freedownloadmanager-nix";
   };
 
-  outputs = { pandoc-plot, nixpkgs-stable, nixpkgs, home-manager
-    , spicetify-nix, stylix, zen-browser, wezterm, nix-flatpak, fdm, neovim-nightly-overlay, ... }:
-    let
-      system = "x86_64-linux";
-      unstable = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      stable = import nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      pkgs = unstable;
-      config = (builtins.fromTOML (builtins.readFile ./config.toml));
-      user = config.user;
-      flatpak-enabled = config.misc.flatpak-enabled or true;
-      zen = zen-browser.packages.${system}.default;
-    in {
-      nixosConfigurations.${user.name} = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
+  outputs = {
+    pandoc-plot,
+    nixpkgs-stable,
+    nixpkgs,
+    home-manager,
+    spicetify-nix,
+    stylix,
+    zen-browser,
+    wezterm,
+    nix-flatpak,
+    fdm,
+    neovim-nightly-overlay,
+    ...
+  }: let
+    system = "x86_64-linux";
+    unstable = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+    stable = import nixpkgs-stable {
+      inherit system;
+      config.allowUnfree = true;
+    };
+    pkgs = unstable;
+    config = builtins.fromTOML (builtins.readFile ./config.toml);
+    stylix-enabled = config.misc.stylix-enabled or true;
+    user = config.user;
+    flatpak-enabled = config.misc.flatpak-enabled or true;
+    zen = zen-browser.packages.${system}.default;
+  in {
+    nixosConfigurations.${user.name} = nixpkgs.lib.nixosSystem {
+      inherit system;
+      modules =
+        [
           (import ./config/configuration.nix user config.system stable zen)
           home-manager.nixosModules.home-manager
           {
@@ -50,21 +63,30 @@
               useGlobalPkgs = false;
               useUserPackages = true;
               backupFileExtension = "backup";
-              users.${user.name} =
-                (import ./home-manager/home.nix);
+              users.${user.name} = import ./home-manager/home.nix;
               extraSpecialArgs = {
-                inherit pkgs user unstable stable spicetify-nix wezterm zen pandoc-plot fdm neovim-nightly-overlay;
+                inherit
+                  pkgs
+                  user
+                  unstable
+                  stable
+                  spicetify-nix
+                  wezterm
+                  zen
+                  pandoc-plot
+                  fdm
+                  neovim-nightly-overlay
+                  stylix-enabled
+                  ;
                 username = user.name;
               };
             };
           }
-          stylix.nixosModules.stylix
-        ] ++ (if flatpak-enabled then
-          [ nix-flatpak.nixosModules.nix-flatpak ]
-        else
-          [ ]);
-      };
-
-      formatter.${system} = pkgs.nixfmt-classic;
+        ]
+        ++ (pkgs.lib.optional stylix-enabled stylix.nixosModules.stylix)
+        ++ (pkgs.lib.optional flatpak-enabled nix-flatpak.nixosModules.nix-flatpak);
     };
+
+    formatter.${system} = pkgs.alejandra;
+  };
 }

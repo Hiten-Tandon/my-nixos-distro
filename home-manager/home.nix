@@ -1,6 +1,20 @@
-{ pandoc-plot, zen, fdm, wezterm, neovim-nightly-overlay, user, pkgs, lib, ... }: {
-  imports = 
-    builtins.map (x: lib.path.append ./modules x) (builtins.attrNames (lib.attrsets.filterAttrs (_: v: v == "regular") (builtins.readDir ./modules))) ++ [../config/stylix.nix];
+{
+  pandoc-plot,
+  zen,
+  fdm,
+  wezterm,
+  neovim-nightly-overlay,
+  user,
+  pkgs,
+  lib,
+  stylix-enabled,
+  ...
+}: {
+  imports =
+    builtins.map (x: lib.path.append ./modules x) (
+      builtins.attrNames (lib.attrsets.filterAttrs (_: v: v == "regular") (builtins.readDir ./modules))
+    )
+    ++ (lib.optional stylix-enabled ../config/stylix.nix);
   stylix.targets.starship.enable = false;
   home = {
     username = user.name;
@@ -56,7 +70,9 @@
     git.enable = true;
     gh = {
       enable = true;
-      settings = { editor = "nvim"; };
+      settings = {
+        editor = "nvim";
+      };
     };
     wezterm = {
       enable = true;
@@ -88,7 +104,7 @@
       enable = true;
       enableBashIntegration = true;
       enableNushellIntegration = true;
-      options = [ "--cmd cd" ];
+      options = ["--cmd cd"];
     };
     obs-studio = {
       enable = true;

@@ -1,10 +1,19 @@
-user: system: stable: zen:
-{ nixpkgs, pkgs, ... }: {
+user: system: stable: zen: {
+  nixpkgs,
+  pkgs,
+  ...
+}: {
   nixpkgs.config.allowUnfree = true;
-  imports = [ ./hardware-configuration.nix ./stylix.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./stylix.nix
+  ];
 
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     substituters = [
       "https://wezterm.cachix.org"
       "https://cache.iog.io"
@@ -32,9 +41,11 @@ user: system: stable: zen:
 
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_6_13;
-    extraModulePackages = with pkgs;
-      [ linuxKernel.packages.linux_6_13.v4l2loopback.out ];
-    kernelModules = [ "v4l2loopback" "snd-aloop" ];
+    extraModulePackages = with pkgs; [linuxKernel.packages.linux_6_13.v4l2loopback.out];
+    kernelModules = [
+      "v4l2loopback"
+      "snd-aloop"
+    ];
     extraModprobeConfig = ''
       options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
     '';
@@ -50,7 +61,7 @@ user: system: stable: zen:
   services = {
     xserver = {
       enable = true;
-      videoDrivers = [ "amdgpu" ];
+      videoDrivers = ["amdgpu"];
       xkb = {
         layout = "us";
         options = "eurosign:e,caps:escape";
@@ -83,7 +94,9 @@ user: system: stable: zen:
 
   networking = {
     hostName =
-      (if user.display-name == null then user.name else user.display-name);
+      if user.display-name == null
+      then user.name
+      else user.display-name;
     networkmanager.enable = true;
   };
 
@@ -101,7 +114,7 @@ user: system: stable: zen:
     };
     nix-ld = {
       enable = true;
-      libraries = with pkgs; [ gmp ];
+      libraries = with pkgs; [gmp];
     };
   };
 
@@ -110,14 +123,29 @@ user: system: stable: zen:
     initialPassword = user.initial-password;
     description = user.display-name;
     shell = pkgs.${user.shell or "bash"};
-    extraGroups = [ "networkmanager" "docker" ]
-      ++ (if user.sudo or true then [ "wheel" ] else [ ]);
-    packages = with pkgs; [ zen kitty gcc clang-tools cmake gnumake ];
+    extraGroups =
+      [
+        "networkmanager"
+        "docker"
+      ]
+      ++ (
+        if user.sudo or true
+        then ["wheel"]
+        else []
+      );
+    packages = with pkgs; [
+      zen
+      kitty
+      gcc
+      clang-tools
+      cmake
+      gnumake
+    ];
   };
 
   fonts = {
-    packages = [ pkgs.nerd-fonts.jetbrains-mono ];
-    fontconfig.defaultFonts.monospace = [ "JetBrainsMono" ];
+    packages = [pkgs.nerd-fonts.jetbrains-mono];
+    fontconfig.defaultFonts.monospace = ["JetBrainsMono"];
   };
 
   system.stateVersion = "24.11";
