@@ -270,24 +270,6 @@
         "type": "github"
       }
     },
-    "flake-utils_4": {
-      "inputs": {
-        "systems": "systems_5"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "freetype2": {
       "flake": false,
       "locked": {
@@ -888,21 +870,6 @@
         "type": "github"
       }
     },
-    "systems_5": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
     "tinted-foot": {
       "flake": false,
       "locked": {
@@ -1056,23 +1023,22 @@
     },
     "zen-browser": {
       "inputs": {
-        "flake-utils": "flake-utils_4",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1740502140,
-        "narHash": "sha256-CSiixzP0VdlP4XBdcRffxswbV8smMlNqjQ8clbE94eM=",
-        "owner": "hiten-tandon",
-        "repo": "twilight-zen-browser-flake",
-        "rev": "5c9c3a2e7ff4884d4d9f9ee24766ad4a7bcd93a4",
-        "type": "github"
+        "lastModified": 1745942003,
+        "narHash": "sha256-jUtPmz/2y7r+OLLikMhH2h4OckuoS5ZZmGe4srHzwNI=",
+        "owner": "invranet",
+        "repo": "zen-flake",
+        "rev": "19a55187d42a2864f3e5030bad4d99beb8ae3531",
+        "type": "gitlab"
       },
       "original": {
-        "owner": "hiten-tandon",
-        "repo": "twilight-zen-browser-flake",
-        "type": "github"
+        "owner": "invranet",
+        "repo": "zen-flake",
+        "type": "gitlab"
       }
     },
     "zlib": {

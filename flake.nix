@@ -15,7 +15,8 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     stylix.url = "github:danth/stylix";
     zen-browser = {
-      url = "github:hiten-tandon/twilight-zen-browser-flake";
+      # url = "github:hiten-tandon/twilight-zen-browser-flake";
+      url = "gitlab:invranet/zen-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     pandoc-plot.url = "github:hiten-tandon/pandoc-plot-flake";
