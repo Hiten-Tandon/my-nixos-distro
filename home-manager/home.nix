@@ -1,5 +1,4 @@
-zen: inputs:
-{ stable, user, pkgs, lib, ... }: {
+{ pandoc-plot, zen, fdm, wezterm, neovim-nightly-overlay, user, pkgs, lib, ... }: {
   imports = 
     builtins.map (x: lib.path.append ./modules x) (builtins.attrNames (lib.attrsets.filterAttrs (_: v: v == "regular") (builtins.readDir ./modules))) ++ [../config/stylix.nix];
   stylix.targets.starship.enable = false;
@@ -32,8 +31,8 @@ zen: inputs:
       pandoc_3_6
       texliveFull
       zen
-      inputs.pandoc-plot.outputs.packages.${pkgs.system}.default
-      inputs.fdm.outputs.packages.${pkgs.system}.default
+      pandoc-plot.outputs.packages.${pkgs.system}.default
+      fdm.outputs.packages.${pkgs.system}.default
       signal-desktop
       deno
       license-go
@@ -61,7 +60,7 @@ zen: inputs:
     };
     wezterm = {
       enable = true;
-      package = inputs.wezterm.packages.${pkgs.system}.default;
+      package = wezterm.packages.${pkgs.system}.default;
       extraConfig = builtins.readFile ./config/wezterm.lua;
     };
     nushell = {
@@ -83,7 +82,7 @@ zen: inputs:
       viAlias = true;
       vimAlias = true;
       defaultEditor = true;
-      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+      package = neovim-nightly-overlay.packages.${pkgs.system}.default;
     };
     zoxide = {
       enable = true;

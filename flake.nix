@@ -22,8 +22,8 @@
     fdm.url = "github:hiten-tandon/freedownloadmanager-nix";
   };
 
-  outputs = inputs@{ nix-flatpak, nixpkgs-stable, nixpkgs, home-manager
-    , spicetify-nix, stylix, zen-browser, ... }:
+  outputs = { pandoc-plot, nixpkgs-stable, nixpkgs, home-manager
+    , spicetify-nix, stylix, zen-browser, wezterm, nix-flatpak, fdm, neovim-nightly-overlay, ... }:
     let
       system = "x86_64-linux";
       unstable = import nixpkgs {
@@ -37,7 +37,6 @@
       pkgs = unstable;
       config = (builtins.fromTOML (builtins.readFile ./config.toml));
       user = config.user;
-      spicePkgs = spicetify-nix.legacyPackages.${system};
       flatpak-enabled = config.misc.flatpak-enabled or true;
       zen = zen-browser.packages.${system}.default;
     in {
@@ -52,9 +51,9 @@
               useUserPackages = true;
               backupFileExtension = "backup";
               users.${user.name} =
-                (import ./home-manager/home.nix zen inputs);
+                (import ./home-manager/home.nix);
               extraSpecialArgs = {
-                inherit pkgs user unstable stable spicetify-nix;
+                inherit pkgs user unstable stable spicetify-nix wezterm zen pandoc-plot fdm neovim-nightly-overlay;
                 username = user.name;
               };
             };
