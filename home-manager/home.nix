@@ -1,10 +1,7 @@
-spicePkgs: zen: inputs:
-{ stable, user, pkgs, ... }: {
-  imports = [
-    ./fastfetch.nix
-    (import ./spicetify.nix spicePkgs inputs)
-    ../config/stylix.nix
-  ];
+zen: inputs:
+{ stable, user, pkgs, lib, ... }: {
+  imports = 
+    builtins.map (x: lib.path.append ./modules x) (builtins.attrNames (lib.attrsets.filterAttrs (_: v: v == "regular") (builtins.readDir ./modules))) ++ [../config/stylix.nix];
   stylix.targets.starship.enable = false;
   home = {
     username = user.name;
@@ -43,7 +40,7 @@ spicePkgs: zen: inputs:
     ];
     file = {
       ".config/nvim" = {
-        source = ./nvim-config;
+        source = ./config/nvim-config;
         recursive = true;
       };
     };
@@ -65,16 +62,16 @@ spicePkgs: zen: inputs:
     wezterm = {
       enable = true;
       package = inputs.wezterm.packages.${pkgs.system}.default;
-      extraConfig = builtins.readFile ./wezterm.lua;
+      extraConfig = builtins.readFile ./config/wezterm.lua;
     };
     nushell = {
       enable = true;
-      configFile.source = ./config.nu;
+      configFile.source = ./config/config.nu;
     };
     starship = {
       enable = true;
       enableNushellIntegration = true;
-      settings = builtins.fromTOML (builtins.readFile ./starship.toml);
+      settings = builtins.fromTOML (builtins.readFile ./config/starship.toml);
     };
     carapace = {
       enable = true;

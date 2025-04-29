@@ -52,9 +52,9 @@
               useUserPackages = true;
               backupFileExtension = "backup";
               users.${user.name} =
-                (import ./home-manager/home.nix spicePkgs zen inputs);
+                (import ./home-manager/home.nix zen inputs);
               extraSpecialArgs = {
-                inherit pkgs user unstable stable;
+                inherit pkgs user unstable stable spicetify-nix;
                 username = user.name;
               };
             };
