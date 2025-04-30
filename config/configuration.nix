@@ -127,12 +127,7 @@ user: system: stable: zen: {
       [
         "networkmanager"
         "docker"
-      ]
-      ++ (
-        if user.sudo or true
-        then ["wheel"]
-        else []
-      );
+      ] ++ (pkgs.lib.optional user.sudo "wheel");
     packages = with pkgs; [
       zen
       kitty

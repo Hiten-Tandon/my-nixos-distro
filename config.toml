@@ -2,7 +2,7 @@
 name = "hitentandon"
 display-name = "Hiten-Tandon"
 initial-password = "123456"
-sudo = true
+sudo = true                   # Always have at least one user with super privleges
 shell = "nushell"
 de = "kde"                    # TODO: Valid Options include: KDE, Gnome, Cosmic, Xfce, Cinnamon
 # wm = Hyprland               # TODO: Valid Options include: Hyprland, i3, awesome, swaywm
