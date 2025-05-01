@@ -130,7 +130,7 @@ user: system: stable: zen: {
       ] ++ (pkgs.lib.optional user.sudo "wheel");
     packages = with pkgs; [
       zen
-      kitty
+      kitty # Change to wezterm
       gcc
       clang-tools
       cmake
