@@ -30,7 +30,6 @@
       markdownlint-cli2
       marksman
       fzf
-      btop
       bash-language-server
       kdePackages.qtstyleplugin-kvantum
       kde-rounded-corners
@@ -68,6 +67,10 @@
     ripgrep.enable = true;
     home-manager.enable = true;
     git.enable = true;
+    btop = {
+      enable = true;
+      package = pkgs.btop-rocm;
+    };
     gh = {
       enable = true;
       settings = {
