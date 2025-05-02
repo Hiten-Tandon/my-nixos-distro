@@ -23,7 +23,7 @@
   };
 
   outputs =
-    {
+    inputs@{
       pandoc-plot,
       nixpkgs-stable,
       nixpkgs,
@@ -57,7 +57,10 @@
     {
       nixosConfigurations.${user.name} = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit user zen stable; system = config.system;};
+        specialArgs = {
+          inherit user zen stable;
+          system = config.system;
+        };
         modules =
           [
             ./config/configuration.nix
@@ -68,18 +71,14 @@
                 useUserPackages = true;
                 backupFileExtension = "backup";
                 users.${user.name} = import ./home-manager/home.nix;
-                extraSpecialArgs = {
+                extraSpecialArgs = inputs // {
                   inherit
                     pkgs
                     user
                     unstable
                     stable
                     spicetify-nix
-                    wezterm
                     zen
-                    pandoc-plot
-                    fdm
-                    neovim-nightly-overlay
                     stylix-enabled
                     ;
                   username = user.name;
