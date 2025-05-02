@@ -70,6 +70,10 @@
     btop = {
       enable = true;
       package = pkgs.btop-rocm;
+      settings = {
+        update_ms = 100;
+        temp_scale = "kelvin";
+      };
     };
     gh = {
       enable = true;
