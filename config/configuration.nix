@@ -134,6 +134,7 @@ user: system: stable: zen: {
       gcc
       clang-tools
       cmake
+      lact
       gnumake
     ];
   };
