@@ -104,7 +104,18 @@ user: system: stable: zen: {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings.LC_ALL = "en_US.UTF-8";
   };
-  environment.stub-ld.enable = true;
+  environment = {
+    stub-ld.enable = true;
+    systemPackages = [ 
+      pkgs.lact
+    ];
+  };
+
+  systemd = {
+    packages = [pkgs.lact];
+    services.lactd.wantedBy = ["multi-user.target"];
+  };
+
   programs = {
     steam = {
       enable = true;
@@ -134,7 +145,6 @@ user: system: stable: zen: {
       gcc
       clang-tools
       cmake
-      lact
       gnumake
     ];
   };
