@@ -6,16 +6,17 @@
   lib,
   modulesPath,
   ...
-}: {
-  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
+}:
+{
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.initrd.availableKernelModules = [
     "nvme"
     "xhci_pci"
   ];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-amd"];
-  boot.extraModulePackages = [];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/3add10f2-3ce6-40da-b166-8de0bb90a376";
@@ -32,7 +33,7 @@
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/9ac8a6c0-1742-44af-a3a9-ab50bedfdfa4";}
+    { device = "/dev/disk/by-uuid/9ac8a6c0-1742-44af-a3a9-ab50bedfdfa4"; }
     {
       device = "/var/lib/swapfile";
       size = 64 * 1024;

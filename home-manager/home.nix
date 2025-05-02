@@ -9,7 +9,8 @@
   lib,
   stylix-enabled,
   ...
-}: {
+}:
+{
   imports =
     builtins.map (x: lib.path.append ./modules x) (
       builtins.attrNames (lib.attrsets.filterAttrs (_: v: v == "regular") (builtins.readDir ./modules))
@@ -111,7 +112,7 @@
       enable = true;
       enableBashIntegration = true;
       enableNushellIntegration = true;
-      options = ["--cmd cd"];
+      options = [ "--cmd cd" ];
     };
     obs-studio = {
       enable = true;

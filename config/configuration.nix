@@ -1,8 +1,10 @@
-user: system: stable: zen: {
+user: system: stable: zen:
+{
   nixpkgs,
   pkgs,
   ...
-}: {
+}:
+{
   nixpkgs.config.allowUnfree = true;
   imports = [
     ./hardware-configuration.nix
@@ -41,7 +43,7 @@ user: system: stable: zen: {
 
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_6_14;
-    extraModulePackages = with pkgs; [linuxKernel.packages.linux_6_14.v4l2loopback.out];
+    extraModulePackages = with pkgs; [ linuxKernel.packages.linux_6_14.v4l2loopback.out ];
     kernelModules = [
       "v4l2loopback"
       "snd-aloop"
@@ -61,7 +63,7 @@ user: system: stable: zen: {
   services = {
     xserver = {
       enable = true;
-      videoDrivers = ["amdgpu"];
+      videoDrivers = [ "amdgpu" ];
       xkb = {
         layout = "us";
         options = "eurosign:e,caps:escape";
@@ -93,10 +95,7 @@ user: system: stable: zen: {
   };
 
   networking = {
-    hostName =
-      if user.display-name == null
-      then user.name
-      else user.display-name;
+    hostName = if user.display-name == null then user.name else user.display-name;
     networkmanager.enable = true;
   };
 
@@ -106,14 +105,14 @@ user: system: stable: zen: {
   };
   environment = {
     stub-ld.enable = true;
-    systemPackages = [ 
+    systemPackages = [
       pkgs.lact
     ];
   };
 
   systemd = {
-    packages = [pkgs.lact];
-    services.lactd.wantedBy = ["multi-user.target"];
+    packages = [ pkgs.lact ];
+    services.lactd.wantedBy = [ "multi-user.target" ];
   };
 
   programs = {
@@ -125,7 +124,7 @@ user: system: stable: zen: {
     };
     nix-ld = {
       enable = true;
-      libraries = with pkgs; [gmp];
+      libraries = with pkgs; [ gmp ];
     };
   };
 
@@ -134,11 +133,10 @@ user: system: stable: zen: {
     initialPassword = user.initial-password;
     description = user.display-name;
     shell = pkgs.${user.shell or "bash"};
-    extraGroups =
-      [
-        "networkmanager"
-        "docker"
-      ] ++ (pkgs.lib.optional user.sudo "wheel");
+    extraGroups = [
+      "networkmanager"
+      "docker"
+    ] ++ (pkgs.lib.optional user.sudo "wheel");
     packages = with pkgs; [
       zen
       kitty # Change to wezterm
@@ -150,8 +148,8 @@ user: system: stable: zen: {
   };
 
   fonts = {
-    packages = [pkgs.nerd-fonts.jetbrains-mono];
-    fontconfig.defaultFonts.monospace = ["JetBrainsMono"];
+    packages = [ pkgs.nerd-fonts.jetbrains-mono ];
+    fontconfig.defaultFonts.monospace = [ "JetBrainsMono" ];
   };
 
   system.stateVersion = "24.11";

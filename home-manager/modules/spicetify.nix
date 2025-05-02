@@ -2,10 +2,12 @@
   pkgs,
   spicetify-nix,
   ...
-}: let
+}:
+let
   spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
-in {
-  imports = [spicetify-nix.homeManagerModules.default];
+in
+{
+  imports = [ spicetify-nix.homeManagerModules.default ];
   programs.spicetify = {
     enable = true;
     theme = spicePkgs.themes.sleek;
