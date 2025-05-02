@@ -1,9 +1,5 @@
 user: system: stable: zen:
-{
-  nixpkgs,
-  pkgs,
-  ...
-}:
+{ nixpkgs, pkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
   imports = [
@@ -105,9 +101,7 @@ user: system: stable: zen:
   };
   environment = {
     stub-ld.enable = true;
-    systemPackages = [
-      pkgs.lact
-    ];
+    systemPackages = [ pkgs.lact ];
   };
 
   systemd = {

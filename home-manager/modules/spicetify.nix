@@ -1,8 +1,4 @@
-{
-  pkgs,
-  spicetify-nix,
-  ...
-}:
+{ pkgs, spicetify-nix, ... }:
 let
   spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
 in
