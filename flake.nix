@@ -57,9 +57,10 @@
     {
       nixosConfigurations.${user.name} = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = {inherit user zen stable; system = config.system;};
         modules =
           [
-            (import ./config/configuration.nix user config.system stable zen)
+            ./config/configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager = {

@@ -1,5 +1,12 @@
-user: system: stable: zen:
-{ nixpkgs, pkgs, ... }:
+{
+  user,
+  system,
+  stable,
+  zen,
+  nixpkgs,
+  pkgs,
+  ...
+}:
 {
   nixpkgs.config.allowUnfree = true;
   imports = [
