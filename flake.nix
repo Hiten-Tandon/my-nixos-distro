@@ -23,7 +23,7 @@
   };
 
   outputs =
-    inputs@{
+    {
       pandoc-plot,
       nixpkgs-stable,
       nixpkgs,
@@ -58,33 +58,26 @@
       nixosConfigurations.${user.name} = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
-          inherit user zen stable;
+          inherit
+            home-manager
+            pandoc-plot
+            fdm
+            wezterm
+            neovim-nightly-overlay
+            pkgs
+            user
+            unstable
+            stable
+            spicetify-nix
+            zen
+            stylix-enabled
+            ;
           system = config.system;
         };
         modules =
           [
-            ./config/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = false;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                users.${user.name} = import ./home-manager/home.nix;
-                extraSpecialArgs = inputs // {
-                  inherit
-                    pkgs
-                    user
-                    unstable
-                    stable
-                    spicetify-nix
-                    zen
-                    stylix-enabled
-                    ;
-                  username = user.name;
-                };
-              };
-            }
+            ./config
+            ./home-manager
           ]
           ++ (pkgs.lib.optional stylix-enabled stylix.nixosModules.stylix)
           ++ (pkgs.lib.optional flatpak-enabled nix-flatpak.nixosModules.nix-flatpak);
