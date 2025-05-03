@@ -20,6 +20,7 @@
     };
     pandoc-plot.url = "github:hiten-tandon/pandoc-plot-flake";
     fdm.url = "github:hiten-tandon/freedownloadmanager-nix";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
@@ -35,6 +36,7 @@
       nix-flatpak,
       fdm,
       neovim-nightly-overlay,
+      flake-utils,
       ...
     }:
     let
@@ -83,6 +85,10 @@
           ++ (pkgs.lib.optional flatpak-enabled nix-flatpak.nixosModules.nix-flatpak);
       };
 
-      formatter.${system} = pkgs.nixfmt-tree;
-    };
+    }
+    // flake-utils.lib.eachDefaultSystem (
+      system: with import nixpkgs { inherit system; }; {
+        formatter = nixfmt-tree;
+      }
+    );
 }

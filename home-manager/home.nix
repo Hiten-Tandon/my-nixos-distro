@@ -11,11 +11,7 @@
   ...
 }:
 {
-  imports =
-    builtins.map (x: lib.path.append ./modules x) (
-      builtins.attrNames (lib.attrsets.filterAttrs (_: v: v == "regular") (builtins.readDir ./modules))
-    )
-    ++ (lib.optional stylix-enabled ../config/stylix.nix);
+  imports = [./modules] ++ (lib.optional stylix-enabled ../config/stylix.nix);
   stylix.targets.starship.enable = false;
   home = {
     username = user.name;
