@@ -49,6 +49,7 @@ in
       signal-desktop
       deno
       license-go
+      codesnap
     ];
     file = {
       ".config/nvim" = {
