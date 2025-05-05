@@ -5,13 +5,16 @@
   wezterm,
   neovim-nightly-overlay,
   user,
-  pkgs,
   lib,
   stylix-enabled,
+  unstable,
   ...
 }:
+let
+  pkgs = unstable;
+in
 {
-  imports = [./modules] ++ (lib.optional stylix-enabled ../config/stylix.nix);
+  imports = [ ./modules ] ++ (lib.optional stylix-enabled ../config/stylix.nix);
   stylix.targets.starship.enable = false;
   home = {
     username = user.name;

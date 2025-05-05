@@ -4,7 +4,6 @@
   fdm,
   wezterm,
   neovim-nightly-overlay,
-  pkgs,
   unstable,
   stable,
   spicetify-nix,
@@ -28,7 +27,6 @@
             fdm
             wezterm
             neovim-nightly-overlay
-            pkgs
             user
             unstable
             stable

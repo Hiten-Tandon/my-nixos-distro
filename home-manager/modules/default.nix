@@ -1,3 +1,7 @@
-{...}: {
-  imports = [./fastfetch.nix ./spicetify.nix];
+{ ... }:
+{
+  imports = [
+    ./fastfetch.nix
+    ./spicetify.nix
+  ];
 }

@@ -1,12 +1,15 @@
 {
   user,
   system,
+  unstable,
   stable,
   zen,
   nixpkgs,
-  pkgs,
   ...
 }:
+let
+  pkgs = unstable;
+in
 {
   nixpkgs.config.allowUnfree = true;
   imports = [

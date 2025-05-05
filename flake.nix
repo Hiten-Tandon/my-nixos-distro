@@ -66,7 +66,6 @@
             fdm
             wezterm
             neovim-nightly-overlay
-            pkgs
             user
             unstable
             stable
