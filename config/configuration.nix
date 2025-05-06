@@ -2,9 +2,7 @@
   user,
   system,
   unstable,
-  stable,
   zen,
-  nixpkgs,
   ...
 }:
 let
