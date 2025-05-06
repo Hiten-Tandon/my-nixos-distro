@@ -22,6 +22,7 @@ in
       "nix-command"
       "flakes"
     ];
+    extra-experimental-features = [ "pipe-operators" ];
     substituters = [
       "https://wezterm.cachix.org"
       "https://cache.iog.io"

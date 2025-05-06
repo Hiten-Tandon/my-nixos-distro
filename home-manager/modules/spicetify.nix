@@ -1,4 +1,9 @@
-{ nixpkgs, unstable, spicetify-nix, ... }:
+{
+  nixpkgs,
+  unstable,
+  spicetify-nix,
+  ...
+}:
 let
   pkgs = unstable;
   spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
