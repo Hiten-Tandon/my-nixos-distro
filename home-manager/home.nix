@@ -41,7 +41,7 @@ in
       librsvg
       wl-clipboard
       nushellPlugins.polars
-      pandoc_3_6
+      pandoc
       texliveFull
       zen
       pandoc-plot.outputs.packages.${pkgs.system}.default

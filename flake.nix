@@ -24,19 +24,13 @@
   };
 
   outputs =
-    {
-      pandoc-plot,
-      nixpkgs-stable,
+    inputs@{
       nixpkgs,
-      home-manager,
-      spicetify-nix,
-      stylix,
+      nixpkgs-stable,
       zen-browser,
-      wezterm,
-      nix-flatpak,
-      fdm,
-      neovim-nightly-overlay,
+      stylix,
       flake-utils,
+      nix-flatpak,
       ...
     }:
     let
@@ -60,16 +54,18 @@
       nixosConfigurations.${user.name} = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
-          inherit
+          inherit (inputs)
             home-manager
             pandoc-plot
             fdm
             wezterm
             neovim-nightly-overlay
+            spicetify-nix
+            ;
+          inherit
             user
             unstable
             stable
-            spicetify-nix
             zen
             stylix-enabled
             ;
