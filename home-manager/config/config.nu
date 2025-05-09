@@ -7,7 +7,7 @@ $env.EDITOR = "nvim"
 export def nixos-rbld [] {
   let currDir = $"(pwd)"
   rm -rf $"($env.HOME)/.gtkrc-2.0"
-  cd $"($env.HOME)/projects/my-config"
+  cd $"($env.HOME)/projects/nixos-config/my-config"
   sudo nix flake update
   sudo nixos-rebuild switch --flake $".#((open config.toml).user.name)" --impure
   lazygit
