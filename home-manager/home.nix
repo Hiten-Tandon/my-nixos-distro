@@ -46,6 +46,7 @@ in
       zen
       pandoc-plot.outputs.packages.${pkgs.system}.default
       fdm.outputs.packages.${pkgs.system}.default
+      glab
       signal-desktop
       deno
       license-go
