@@ -82,6 +82,7 @@ in
       settings = {
         editor = "nvim";
         git_protocol = "ssh";
+        browser = "${zen}/bin/zen";
       };
     };
     wezterm = {
