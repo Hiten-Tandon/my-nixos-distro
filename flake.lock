@@ -1091,11 +1091,11 @@
         "zen-browser": "zen-browser_2"
       },
       "locked": {
-        "lastModified": 1747425227,
-        "narHash": "sha256-EDaAIsyx7dIdoBqNStoH+jPrbda/xmy5tVnE3ndwM54=",
+        "lastModified": 1747425703,
+        "narHash": "sha256-4D7kSt4hQzHpvLwNxDCYa14Zgrzs1wiV3DsTJ7oYYJI=",
         "owner": "hiten-tandon",
         "repo": "twilight-zen-browser-flake",
-        "rev": "192be0cf7fd42a4f2466a3bc2a86a920035b622c",
+        "rev": "41b0955137ae5d41fcac74baf48929df1d402e67",
         "type": "github"
       },
       "original": {
