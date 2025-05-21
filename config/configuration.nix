@@ -2,13 +2,13 @@
   user,
   system,
   unstable,
+  wezterm,
   zen,
   ...
 }:
 let
   pkgs = unstable;
-in
-{
+in {
   nixpkgs.config.allowUnfree = true;
   imports = [
     ./hardware-configuration.nix
@@ -38,7 +38,6 @@ in
   time.timeZone = system.time-zone;
 
   virtualisation = {
-    docker.enable = true;
     vmVariant.virtualisation = {
       memorySize = 8192;
       cores = 8;
@@ -108,6 +107,7 @@ in
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings.LC_ALL = "en_US.UTF-8";
   };
+
   environment = {
     stub-ld.enable = true;
     systemPackages = [ pkgs.lact ];
@@ -138,14 +138,13 @@ in
     shell = pkgs.${user.shell or "bash"};
     extraGroups = [
       "networkmanager"
-      "docker"
     ] ++ (pkgs.lib.optional user.sudo "wheel");
     packages = with pkgs; [
       zen
-      kitty # Change to wezterm
       gcc
       clang-tools
       cmake
+      wezterm.packages.${pkgs.system}.default
       gnumake
     ];
   };
