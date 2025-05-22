@@ -18,6 +18,7 @@ in
   stylix.targets = {
     starship.enable = false;
     yazi.enable = false;
+    helix.enable = false;
   };
   home = {
     username = user.name;
@@ -61,20 +62,43 @@ in
         recursive = true;
       };
     };
-    sessionVariables = {
-      EDITOR = "nvim";
-      GIT_EDITOR = "nvim";
-    };
   };
 
   programs = {
+    ripgrep.enable = true;
+    home-manager.enable = true;
+    git.enable = true;
     yazi = {
       enable = true;
       enableNushellIntegration = true;
     };
-    ripgrep.enable = true;
-    home-manager.enable = true;
-    git.enable = true;
+    helix = {
+      enable = true;
+      defaultEditor = true;
+      package = unstable.evil-helix;
+      settings = {
+        theme = "rose-pine";
+        editor = {
+          line-number = "relative";
+          scrolloff = 100;
+          mouse = false;
+          popup-border = "all";
+          end-of-line-diagnostics = "all";
+          cursor-shape.insert = "bar";
+          auto-save = {
+            focus-lost = true;
+            after-delay.enable = true;
+          };
+          indent-guides.render = true;
+          inline-diagnostics.cursor-line = "warning";
+          lsp = {
+            display-inlay-hints = true;
+            display-progress-messages = true;
+          };
+          insert-final-newline = false;
+        };
+      };
+    };
     btop = {
       enable = true;
       package = pkgs.btop-rocm;
@@ -114,7 +138,7 @@ in
       enable = true;
       viAlias = true;
       vimAlias = true;
-      defaultEditor = true;
+      # defaultEditor = true;
       package = neovim-nightly-overlay.packages.${pkgs.system}.default;
     };
     zoxide = {
