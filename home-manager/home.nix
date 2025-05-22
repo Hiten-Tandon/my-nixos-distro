@@ -15,7 +15,10 @@ let
 in
 {
   imports = [ ./modules ] ++ (lib.optional stylix-enabled ../config/stylix.nix);
-  stylix.targets.starship.enable = false;
+  stylix.targets = {
+    starship.enable = false;
+    yazi.enable = false;
+  };
   home = {
     username = user.name;
     homeDirectory = "/home/" + user.name;
@@ -65,7 +68,10 @@ in
   };
 
   programs = {
-    lf.enable = true;
+    yazi = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
     ripgrep.enable = true;
     home-manager.enable = true;
     git.enable = true;
