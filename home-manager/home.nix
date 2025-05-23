@@ -98,16 +98,16 @@ in
           };
         };
       };
-      extraPackages = with unstable; [
+      extraPackages = with pkgs; [
         nil
         nixd
         marksman
         bash-language-server
       ];
     };
-    btop = {
+    btop = with pkgs; {
       enable = true;
-      package = pkgs.btop-rocm;
+      package = btop-rocm;
       settings = {
         update_ms = 100;
         temp_scale = "kelvin";
@@ -144,7 +144,6 @@ in
       enable = true;
       viAlias = true;
       vimAlias = true;
-      # defaultEditor = true;
       package = neovim-nightly-overlay.packages.${pkgs.system}.default;
     };
     zoxide = {
