@@ -8,7 +8,8 @@
 }:
 let
   pkgs = unstable;
-in {
+in
+{
   nixpkgs.config.allowUnfree = true;
   imports = [
     ./hardware-configuration.nix
