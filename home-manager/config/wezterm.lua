@@ -11,7 +11,7 @@ config.keys = {
 		key = "F",
 		mods = "CTRL|SHIFT",
 		action = wezterm.action.SplitHorizontal({
-			args = { "lf" },
+			args = { "yazi" },
 		}),
 	},
 }
