@@ -11,10 +11,42 @@ alias nvim = hx
 alias helix = hx
 alias fuckoff = exit
 
-export def nixos-rbld [ --update-flake --uf ] {
+# clone a repo
+export def --env clone-repo [
+  repo: string, # The service provider and repo to clone (ex: github:Hiten-Tandon/my-nixos-distro)
+  target?: string, # The target directory
+  --https, # Use https protocol instead of the default ssh
+  --cd(-c) # cd into the target after cloning
+] {
+  let url = if $https {
+    $repo | str replace -r "(.*):(.*)" "https://${1}.com/${2}"
+  } else {
+    $repo | str replace -r "(.*):(.*)" "git@${1}.com:${2}"
+  }
+
+  let target = if ($target == null) {
+    $repo | str replace -r ".*/(.*)" "${1}"
+  } else {
+    $target
+  }
+
+  git clone $url $target
+  if $cd {
+    cd $target
+  }
+}
+
+# Rebuild nixos config
+# Example:
+# ```
+#   nixos-rbld -u
+# ```
+export def nixos-rbld [
+  --update-flake(-u) # Update the flake before updating the configuration
+] {
   rm -rf $"($env.HOME)/.gtkrc-2.0"
   cd $"($env.HOME)/projects/nixos-config/my-config"
-  if $update_flake or $uf {
+  if $update_flake {
     sudo nix flake update
   }
   sudo nixos-rebuild switch --flake $".#((open config.toml).user.name)" --impure
