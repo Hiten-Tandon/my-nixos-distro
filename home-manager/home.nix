@@ -25,16 +25,9 @@ in
     homeDirectory = "/home/" + user.name;
     stateVersion = "24.11";
     packages = with pkgs; [
-      lua-language-server
-      luarocks
-      lua
-      nil
       ffmpeg
       lazygit
-      markdownlint-cli2
-      marksman
       fzf
-      bash-language-server
       kdePackages.qtstyleplugin-kvantum
       kde-rounded-corners
       element-desktop
@@ -44,7 +37,6 @@ in
       mermaid-cli
       librsvg
       wl-clipboard
-      nushellPlugins.polars
       pandoc
       texliveFull
       zen
@@ -52,16 +44,9 @@ in
       fdm.outputs.packages.${pkgs.system}.default
       glab
       signal-desktop
-      deno
       license-go
       codesnap
     ];
-    file = {
-      ".config/nvim" = {
-        source = ./config/nvim-config;
-        recursive = true;
-      };
-    };
   };
 
   programs = {
@@ -102,6 +87,8 @@ in
         nixd
         marksman
         bash-language-server
+        markdownlint-cli2
+        marksman
       ];
     };
     btop = with pkgs; {
@@ -138,12 +125,6 @@ in
       enable = true;
       enableNushellIntegration = true;
       enableBashIntegration = true;
-    };
-    neovim = {
-      enable = true;
-      viAlias = true;
-      vimAlias = true;
-      package = neovim-nightly-overlay.packages.${pkgs.system}.default;
     };
     zoxide = {
       enable = true;
