@@ -2,16 +2,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     wezterm.url = "github:wez/wezterm?dir=nix";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    flake-utils.url = "github:numtide/flake-utils";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     stylix = {
       url = "github:danth/stylix";
@@ -21,9 +13,6 @@
       url = "github:hiten-tandon/twilight-zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    pandoc-plot.url = "github:hiten-tandon/pandoc-plot-flake";
-    fdm.url = "github:hiten-tandon/freedownloadmanager-nix";
-    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
@@ -58,7 +47,6 @@
         inherit system;
         specialArgs = {
           inherit (inputs)
-            home-manager
             pandoc-plot
             fdm
             wezterm
@@ -75,10 +63,7 @@
           system = config.system;
         };
         modules =
-          [
-            ./config
-            ./home-manager
-          ]
+          [ ./config ]
           ++ (pkgs.lib.optional stylix-enabled stylix.nixosModules.stylix)
           ++ (pkgs.lib.optional flatpak-enabled nix-flatpak.nixosModules.nix-flatpak);
       };
