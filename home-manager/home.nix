@@ -75,7 +75,6 @@ in
     helix = {
       enable = true;
       defaultEditor = true;
-      package = unstable.evil-helix;
       settings = {
         theme = "rose_pine";
         editor = {

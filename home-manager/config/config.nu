@@ -1,7 +1,7 @@
 $env.config.show_banner = false;
 $env.config.use_kitty_protocol = true;
-$env.PATH = $env.PATH | append ["/var/lib/flatpak/exports/bin"]
-$env.XDG_CONFIG_DIRS = $"($env.XDG_CONFIG_DIRS):($env.HOME)/.config"
+$env.PATH = $env.PATH | append [ "/var/lib/flatpak/exports/bin" ]
+$env.NIX_USER_CONF_FILES = $"($env.HOME)/.config/nix"
 $env.EDITOR = "hx"
 
 alias vi = hx
