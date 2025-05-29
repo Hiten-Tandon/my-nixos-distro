@@ -81,7 +81,7 @@ in
     };
     desktopManager.plasma6.enable = true;
     fwupd.enable = true;
-    printing.enable = true;
+    printing.enable = false;
     pipewire = {
       enable = true;
       pulse.enable = true;
