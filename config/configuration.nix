@@ -147,6 +147,8 @@ in
       cmake
       wezterm.packages.${pkgs.system}.default
       gnumake
+      home-manager
+      git
     ];
   };
 
