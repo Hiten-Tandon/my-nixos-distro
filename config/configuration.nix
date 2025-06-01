@@ -63,6 +63,7 @@ in
   };
 
   services = {
+    cron.enable = true;
     xserver = {
       enable = true;
       videoDrivers = [ "amdgpu" ];
@@ -107,6 +108,11 @@ in
   };
 
   environment = {
+    etc = {
+      "cron.allow".text = ''
+        ${user.name}
+      '';
+    };
     stub-ld.enable = true;
     systemPackages = [ pkgs.lact ];
   };
