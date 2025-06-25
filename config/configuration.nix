@@ -71,8 +71,8 @@ in
         layout = "us";
         options = "eurosign:e,caps:escape";
       };
-      displayManager.gdm.enable = system.dm == "gdm";
     };
+    displayManager.gdm.enable = system.dm == "gdm";
     displayManager.sddm = {
       enable = system.dm == "sddm";
       wayland.enable = system.dm == "sddm";
@@ -90,7 +90,10 @@ in
   };
 
   hardware = {
-    graphics.enable = true;
+    graphics = {
+      enable = true;
+      extraPackages = [pkgs.amdvlk];
+    };
     bluetooth = {
       enable = true;
       powerOnBoot = true;
