@@ -11,6 +11,7 @@ let
 in
 {
   nixpkgs.config.allowUnfree = true;
+
   imports = [
     ./hardware-configuration.nix
     ./stylix.nix
@@ -59,6 +60,15 @@ in
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
+    };
+  };
+
+  security = {
+    doas.enable = true;
+    sudo.enable = false;
+    sudo-rs = {
+      enable = true;
+      execWheelOnly = true;
     };
   };
 
@@ -117,7 +127,7 @@ in
       '';
     };
     stub-ld.enable = true;
-    systemPackages = [ pkgs.lact ];
+    systemPackages = with pkgs; [ lact git ];
   };
 
   systemd = {
