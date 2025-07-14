@@ -165,6 +165,7 @@ in
       gnumake
       home-manager
       git
+      signal-desktop-source
     ];
   };
 
