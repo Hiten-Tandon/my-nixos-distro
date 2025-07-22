@@ -146,6 +146,7 @@ in
       enable = true;
       libraries = with pkgs; [ gmp ];
     };
+    kdeconnect.enable = true;
   };
 
   users.users.${user.name} = {
