@@ -27,15 +27,10 @@
     }:
     let
       system = "x86_64-linux";
-      unstable = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
       stable = import nixpkgs-stable {
         inherit system;
         config.allowUnfree = true;
       };
-      pkgs = unstable;
       config = builtins.fromTOML (builtins.readFile ./config.toml);
       stylix-enabled = config.misc.stylix-enabled or true;
       user = config.user;
@@ -55,7 +50,6 @@
             ;
           inherit
             user
-            unstable
             stable
             zen
             stylix-enabled
@@ -64,8 +58,8 @@
         };
         modules =
           [ ./config ]
-          ++ (pkgs.lib.optional stylix-enabled stylix.nixosModules.stylix)
-          ++ (pkgs.lib.optional flatpak-enabled nix-flatpak.nixosModules.nix-flatpak);
+          ++ (nixpkgs.lib.optional stylix-enabled stylix.nixosModules.stylix)
+          ++ (nixpkgs.lib.optional flatpak-enabled nix-flatpak.nixosModules.nix-flatpak);
       };
 
     }

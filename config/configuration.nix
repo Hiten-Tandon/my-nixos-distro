@@ -1,14 +1,11 @@
 {
   user,
+  pkgs,
   system,
-  unstable,
   wezterm,
   zen,
   ...
 }:
-let
-  pkgs = unstable;
-in
 {
   nixpkgs.config.allowUnfree = true;
 
