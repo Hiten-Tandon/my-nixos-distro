@@ -54,7 +54,7 @@
             zen
             stylix-enabled
             ;
-          system = config.system;
+          inherit (config) system;
         };
         modules =
           [ ./config ]
