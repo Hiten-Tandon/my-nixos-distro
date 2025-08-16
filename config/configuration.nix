@@ -2,7 +2,6 @@
   user,
   pkgs,
   system,
-  wezterm,
   zen,
   ...
 }:
@@ -159,7 +158,8 @@
       gcc
       clang-tools
       cmake
-      wezterm.packages.${pkgs.system}.default
+      # wezterm.packages.${pkgs.system}.default
+      ghostty
       gnumake
       home-manager
       git
