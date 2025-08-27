@@ -9,7 +9,10 @@
       name = "Bibata-Modern-Ice";
       size = 24;
     };
-    targets.spicetify.enable = false;
+    targets = {
+      spicetify.enable = false;
+      qt.enable = false;
+    };
     fonts = {
       serif = {
         package = pkgs.dejavu_fonts;

@@ -44,8 +44,8 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_6_15;
-    extraModulePackages = with pkgs; [ linuxPackages_6_15.v4l2loopback.out ];
+    kernelPackages = pkgs.linuxPackages_latest;
+    # extraModulePackages = with pkgs; [ linuxPackages_latest.v4l2loopback.out ];
     kernelModules = [
       "v4l2loopback"
       "snd-aloop"
@@ -98,7 +98,7 @@
   hardware = {
     graphics = {
       enable = true;
-      extraPackages = [pkgs.amdvlk];
+      extraPackages = [ pkgs.amdvlk ];
     };
     bluetooth = {
       enable = true;
@@ -123,7 +123,10 @@
       '';
     };
     stub-ld.enable = true;
-    systemPackages = with pkgs; [ lact git ];
+    systemPackages = with pkgs; [
+      lact
+      git
+    ];
   };
 
   systemd = {
@@ -152,7 +155,8 @@
     shell = pkgs.${user.shell or "bash"};
     extraGroups = [
       "networkmanager"
-    ] ++ (pkgs.lib.optional user.sudo "wheel");
+    ]
+    ++ (pkgs.lib.optional user.sudo "wheel");
     packages = with pkgs; [
       zen
       gcc

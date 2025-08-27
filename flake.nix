@@ -56,10 +56,11 @@
             ;
           inherit (config) system;
         };
-        modules =
-          [ ./config ]
-          ++ (nixpkgs.lib.optional stylix-enabled stylix.nixosModules.stylix)
-          ++ (nixpkgs.lib.optional flatpak-enabled nix-flatpak.nixosModules.nix-flatpak);
+        modules = [
+          ./config
+        ]
+        ++ (nixpkgs.lib.optional stylix-enabled stylix.nixosModules.stylix)
+        ++ (nixpkgs.lib.optional flatpak-enabled nix-flatpak.nixosModules.nix-flatpak);
       };
 
     }
