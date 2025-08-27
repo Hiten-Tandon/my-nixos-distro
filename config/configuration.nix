@@ -45,7 +45,7 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    # extraModulePackages = with pkgs; [ linuxPackages_latest.v4l2loopback.out ];
+    extraModulePackages = with pkgs; [ linuxPackages_latest.v4l2loopback.out ];
     kernelModules = [
       "v4l2loopback"
       "snd-aloop"
