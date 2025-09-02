@@ -1,4 +1,8 @@
 {
+  nixConfig = {
+    experimental-features = ["nix-command" "flakes"];
+    extra-experimental-features = [ "pipe-operators" ];
+  };
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
