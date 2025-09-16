@@ -383,11 +383,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1757360005,
-        "narHash": "sha256-VwzdFEQCpYMU9mc7BSQGQe5wA1MuTYPJnRc9TQCTMcM=",
+        "lastModified": 1757956156,
+        "narHash": "sha256-f0W7qbsCqpi6swQ5w8H+0YrAbNwsHgCFDkNRMTJjqrE=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "834a743c11d66ea18e8c54872fbcc72ce48bc57f",
+        "rev": "0ce0103b498bb22f899ed8862d8d7f9503ed9cdb",
         "type": "github"
       },
       "original": {
@@ -572,11 +572,11 @@
         "zen-browser": "zen-browser_2"
       },
       "locked": {
-        "lastModified": 1757911638,
-        "narHash": "sha256-2RXbOynzHcQyFxjr2BIMWfpE4YyWT7VT8leu2pDQv/4=",
+        "lastModified": 1758018062,
+        "narHash": "sha256-teJDGYNJrsc06K+ZW1TEZSg8XMt55II7hlFNg1IaMC8=",
         "owner": "hiten-tandon",
         "repo": "twilight-zen-browser-flake",
-        "rev": "9215dac5c714fded1d92332d5859843bd6c7b7ca",
+        "rev": "06fb3eee1015aabbce44bcc3e1554551138bd3fe",
         "type": "github"
       },
       "original": {
@@ -588,8 +588,8 @@
     "zen-browser_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1757882559,
-        "narHash": "sha256-o7WfgyqZoME0s9BSQhM9xmXyGthOYbaVutf3UgBN7Zg=",
+        "lastModified": 1757981331,
+        "narHash": "sha256-9Olr4rzIqfPZ4occ14pQfaS4D1ErjR6tC4We5MIlDmE=",
         "type": "tarball",
         "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-x86_64.tar.xz"
       },
