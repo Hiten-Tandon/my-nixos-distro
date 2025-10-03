@@ -96,10 +96,7 @@
   };
 
   hardware = {
-    graphics = {
-      enable = true;
-      extraPackages = [ pkgs.amdvlk ];
-    };
+    graphics.enable = true;
     bluetooth = {
       enable = true;
       powerOnBoot = true;
