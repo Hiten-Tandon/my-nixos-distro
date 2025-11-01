@@ -164,7 +164,7 @@
       gnumake
       home-manager
       git
-      signal-desktop-source
+      signal-desktop
     ];
   };
 
