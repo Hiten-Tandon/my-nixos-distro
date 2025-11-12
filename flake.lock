@@ -276,11 +276,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1762498405,
-        "narHash": "sha256-Zg/SCgCaAioc0/SVZQJxuECGPJy+OAeBcGeA5okdYDc=",
+        "lastModified": 1762756533,
+        "narHash": "sha256-HiRDeUOD1VLklHeOmaKDzf+8Hb7vSWPVFcWwaTrpm+U=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6faeb062ee4cf4f105989d490831713cc5a43ee1",
+        "rev": "c2448301fb856e351aab33e64c33a3fc8bcf637d",
         "type": "github"
       },
       "original": {
@@ -550,11 +550,11 @@
       },
       "locked": {
         "dir": "nix",
-        "lastModified": 1761372218,
-        "narHash": "sha256-DQQsgq3D78RHNf3YoiQRdYsxntJ4phl4DJ3pcM2DYv8=",
+        "lastModified": 1762845056,
+        "narHash": "sha256-vDB1O1Nz0FcmJtUlwTdBfH0HOq2+ftCnTfIfMa+d7x8=",
         "owner": "wez",
         "repo": "wezterm",
-        "rev": "b6e75fd7c8f9c9ad5af4efbba1d28df0969f6b17",
+        "rev": "118802c24420f3f4c206333cc7885cd922142e8e",
         "type": "github"
       },
       "original": {
@@ -573,11 +573,11 @@
         "zen-browser": "zen-browser_2"
       },
       "locked": {
-        "lastModified": 1762778604,
-        "narHash": "sha256-pdeOVR02DvPZcW3XmgRiWLVDnjnhoSvVi85e9rU3tI4=",
+        "lastModified": 1762929650,
+        "narHash": "sha256-oAkuXMmHVZ9G5Dst/pJBSQCVvNAlhNpexhDwmWU9tJY=",
         "owner": "hiten-tandon",
         "repo": "twilight-zen-browser-flake",
-        "rev": "7a5a51e558a1836d3d6b68e915ca2a2db4ba8f2a",
+        "rev": "05e19440546250ce2452e49ecc687f6d836b8ec6",
         "type": "github"
       },
       "original": {
@@ -589,8 +589,8 @@
     "zen-browser_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1762732645,
-        "narHash": "sha256-wiF2dfGDwAkGGlr7LlPbSDCaJRXNazBWUTr0f8DK7xw=",
+        "lastModified": 1762886287,
+        "narHash": "sha256-JiB8JaFrNz8cjZvDpZFeoYaTHM3XAaeXTwM1HZ10FxU=",
         "type": "tarball",
         "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-x86_64.tar.xz"
       },
