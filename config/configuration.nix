@@ -85,7 +85,10 @@
     };
     displayManager.cosmic-greeter.enable = system.dm == "cosmic-greeter";
     desktopManager.plasma6.enable = user.de == "kde";
-    desktopManager.cosmic.enable = user.de == "cosmic";
+    desktopManager.cosmic = {
+      enable = user.de == "cosmic";
+      xwayland.enable = user.de == "cosmic";      
+    };
     fwupd.enable = true;
     printing.enable = false;
     pipewire = {
