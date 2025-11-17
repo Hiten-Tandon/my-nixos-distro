@@ -83,7 +83,9 @@
       enable = system.dm == "sddm";
       wayland.enable = system.dm == "sddm";
     };
-    desktopManager.plasma6.enable = true;
+    displayManager.cosmic-greeter.enable = system.dm == "cosmic-greeter";
+    desktopManager.plasma6.enable = user.de == "kde";
+    desktopManager.cosmic.enable = user.de == "cosmic";
     fwupd.enable = true;
     printing.enable = false;
     pipewire = {
@@ -114,11 +116,7 @@
   };
 
   environment = {
-    etc = {
-      "cron.allow".text = ''
-        ${user.name}
-      '';
-    };
+    sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
     stub-ld.enable = true;
     systemPackages = with pkgs; [
       lact
@@ -133,7 +131,7 @@
 
   programs = {
     steam = {
-      enable = true;
+      enable = false;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
@@ -142,7 +140,7 @@
       enable = true;
       libraries = with pkgs; [ gmp ];
     };
-    kdeconnect.enable = true;
+    kdeconnect.enable = false;
   };
 
   users.users.${user.name} = {
@@ -171,6 +169,11 @@
   fonts = {
     packages = [ pkgs.nerd-fonts.jetbrains-mono ];
     fontconfig.defaultFonts.monospace = [ "JetBrainsMono" ];
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-cosmic ];
   };
 
   system.stateVersion = "24.11";
