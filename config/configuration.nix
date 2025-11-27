@@ -3,6 +3,7 @@
   pkgs,
   system,
   zen,
+  stable,
   ...
 }:
 {
@@ -83,7 +84,10 @@
       enable = system.dm == "sddm";
       wayland.enable = system.dm == "sddm";
     };
-    displayManager.cosmic-greeter.enable = system.dm == "cosmic-greeter";
+    displayManager.cosmic-greeter = {
+      enable = system.dm == "cosmic-greeter";
+      package = stable.cosmic-greeter;
+    };
     desktopManager.plasma6.enable = user.de == "kde";
     desktopManager.cosmic = {
       enable = user.de == "cosmic";
