@@ -5,7 +5,7 @@
   };
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     wezterm.url = "github:wez/wezterm?dir=nix";
     flake-utils.url = "github:numtide/flake-utils";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
