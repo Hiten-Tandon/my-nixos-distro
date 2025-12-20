@@ -79,19 +79,24 @@
         options = "eurosign:e,caps:escape";
       };
     };
-    displayManager.gdm.enable = system.dm == "gdm";
-    displayManager.sddm = {
-      enable = system.dm == "sddm";
-      wayland.enable = system.dm == "sddm";
+    displayManager = {
+      gdm.enable = system.dm == "gdm";
+      sddm = {
+        enable = system.dm == "sddm";
+        wayland.enable = system.dm == "sddm";
+      };
+      cosmic-greeter = {
+        enable = system.dm == "cosmic-greeter";
+        package = stable.cosmic-greeter;
+      };
     };
-    displayManager.cosmic-greeter = {
-      enable = system.dm == "cosmic-greeter";
-      package = stable.cosmic-greeter;
-    };
-    desktopManager.plasma6.enable = user.de == "kde";
-    desktopManager.cosmic = {
-      enable = user.de == "cosmic";
-      xwayland.enable = user.de == "cosmic";      
+    desktopmanager = {
+      plasma6.enable = user.de == "kde";
+      cosmic = {
+        enable = user.de == "cosmic";
+        xwayland.enable = user.de == "cosmic";      
+      };
+      gnome.enable = user.de == "gnome";
     };
     fwupd.enable = true;
     printing.enable = false;
