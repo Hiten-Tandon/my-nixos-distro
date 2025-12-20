@@ -78,6 +78,8 @@
         layout = "us";
         options = "eurosign:e,caps:escape";
       };
+      desktopManager.xfce.enable = system.de == "xfce";
+      displayManager.lightdm.enable = system.dm == "lightdm";
     };
     displayManager = {
       gdm.enable = system.dm == "gdm";
