@@ -78,7 +78,7 @@
         layout = "us";
         options = "eurosign:e,caps:escape";
       };
-      desktopManager.xfce.enable = system.de == "xfce";
+      desktopManager.xfce.enable = user.de == "xfce";
       displayManager.lightdm.enable = system.dm == "lightdm";
     };
     displayManager = {
@@ -92,7 +92,7 @@
         package = stable.cosmic-greeter;
       };
     };
-    desktopmanager = {
+    desktopManager = {
       plasma6.enable = user.de == "kde";
       cosmic = {
         enable = user.de == "cosmic";
