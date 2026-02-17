@@ -262,11 +262,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1770562336,
-        "narHash": "sha256-ub1gpAONMFsT/GU2hV6ZWJjur8rJ6kKxdm9IlCT0j84=",
+        "lastModified": 1771008912,
+        "narHash": "sha256-gf2AmWVTs8lEq7z/3ZAsgnZDhWIckkb+ZnAo5RzSxJg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d6c71932130818840fc8fe9509cf50be8c64634f",
+        "rev": "a82ccc39b39b621151d6732718e3e250109076fa",
         "type": "github"
       },
       "original": {
@@ -278,11 +278,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1770770419,
-        "narHash": "sha256-iKZMkr6Cm9JzWlRYW/VPoL0A9jVKtZYiU4zSrVeetIs=",
+        "lastModified": 1771208521,
+        "narHash": "sha256-X01Q3DgSpjeBpapoGA4rzKOn25qdKxbPnxHeMLNoHTU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6c5e707c6b5339359a9a9e215c5e66d6d802fd7a",
+        "rev": "fa56d7d6de78f5a7f997b0ea2bc6efd5868ad9e8",
         "type": "github"
       },
       "original": {
@@ -386,11 +386,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1770587906,
-        "narHash": "sha256-N9ZTG3ia7l4iQO+9JlOj+sX4yu6gl7a3aozrlhSIJwQ=",
+        "lastModified": 1771330061,
+        "narHash": "sha256-qBWXy3mSOEYjvZB/RZHT0joVPhNWU8GQZQljLzyMTq0=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "72e6483a88d51471a6c55e1d43e7ed2bc47a76a4",
+        "rev": "fa45bf2d70517a8643a0edb44b02b8e6c0453d06",
         "type": "github"
       },
       "original": {
@@ -575,11 +575,11 @@
         "zen-browser": "zen-browser_2"
       },
       "locked": {
-        "lastModified": 1770625367,
-        "narHash": "sha256-X6lNnfiFfnNyQWuV31S1PUDaJzX1sm6qgDKb1RIu7zo=",
+        "lastModified": 1771334996,
+        "narHash": "sha256-/XK1F2IsOyds63JgNezd++YVC6wa80Gm4PwLnaXpnFE=",
         "owner": "hiten-tandon",
         "repo": "twilight-zen-browser-flake",
-        "rev": "8a3fd952cf264b5d45ebd1ac08df9597abd0726a",
+        "rev": "691b05a3b2d67c5104b845b20a78402aa6d0ef79",
         "type": "github"
       },
       "original": {
@@ -591,8 +591,8 @@
     "zen-browser_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1770548355,
-        "narHash": "sha256-4kkoGPRDYEdBgckTciy7RA86wkpnjixv1cEBGZfWtXA=",
+        "lastModified": 1771286547,
+        "narHash": "sha256-HY7gnRg9oh5z4Wr0M0mfGIO3u1XbReoSQPq1PtIv8IY=",
         "type": "tarball",
         "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen.linux-x86_64.tar.xz"
       },

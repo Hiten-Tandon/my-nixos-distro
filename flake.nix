@@ -36,7 +36,7 @@
         inherit system;
         config.allowUnfree = true;
       };
-      config = builtins.fromTOML (builtins.readFile ./config.toml);
+      config = fromTOML (builtins.readFile ./config.toml);
       stylix-enabled = config.misc.stylix-enabled or true;
       user = config.user;
       flatpak-enabled = config.misc.flatpak-enabled or true;
