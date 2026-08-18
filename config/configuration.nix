@@ -176,6 +176,17 @@
       home-manager
       git
       signal-desktop
+      uutils-coreutils
+      uutils-findutils
+      uutils-diffutils
+      uutils-sed
+      uutils-tar
+      uutils-procps
+      uutils-login
+      uutils-acl
+      uutils-hostname
+      uutils-procps
+      uutils-util-linux
     ];
   };
 
